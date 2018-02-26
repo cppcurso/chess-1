@@ -1,4 +1,6 @@
-# chess-1
-Un ajedrez en C++
-# Developers
-Fernando
+# Chess 1
+El ajedrez en C++ de la fila 1
+# Developer
+Sara García
+Jorge Lanchares
+Fernando 
