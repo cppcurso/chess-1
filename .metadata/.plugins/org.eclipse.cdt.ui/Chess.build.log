@@ -1,0 +1,25 @@
+14:17:39 **** Build of configuration Debug for project Chess ****
+make all 
+Building file: ../src/Cell.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Cell.d" -MT"src/Cell.d" -o "src/Cell.o" "../src/Cell.cpp"
+Finished building: ../src/Cell.cpp
+ 
+Building file: ../src/Chess.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Chess.d" -MT"src/Chess.d" -o "src/Chess.o" "../src/Chess.cpp"
+Finished building: ../src/Chess.cpp
+ 
+Building file: ../src/Piece.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Piece.d" -MT"src/Piece.d" -o "src/Piece.o" "../src/Piece.cpp"
+Finished building: ../src/Piece.cpp
+ 
+Building target: Chess
+Invoking: GCC C++ Linker
+g++  -o "Chess"  ./src/Cell.o ./src/Chess.o ./src/Piece.o   
+Finished building target: Chess
+ 
+
+14:17:44 Build Finished (took 5s.422ms)
+
