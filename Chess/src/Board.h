@@ -17,7 +17,7 @@ public:
 	Board();
 	void init();
 	void print();
-	bool valid(int x, int y, Piece piece);
+	bool valid(int x, int y, Piece , Cell cell);
 	void move(int x, int y, Piece piece);
 };
 

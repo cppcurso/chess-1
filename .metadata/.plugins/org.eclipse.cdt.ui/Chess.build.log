@@ -1,25 +1,16 @@
-14:17:39 **** Build of configuration Debug for project Chess ****
+21:48:18 **** Incremental Build of configuration Debug for project Chess ****
 make all 
-Building file: ../src/Cell.cpp
+Building file: ../src/Board.cpp
 Invoking: GCC C++ Compiler
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Cell.d" -MT"src/Cell.d" -o "src/Cell.o" "../src/Cell.cpp"
-Finished building: ../src/Cell.cpp
- 
-Building file: ../src/Chess.cpp
-Invoking: GCC C++ Compiler
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Chess.d" -MT"src/Chess.d" -o "src/Chess.o" "../src/Chess.cpp"
-Finished building: ../src/Chess.cpp
- 
-Building file: ../src/Piece.cpp
-Invoking: GCC C++ Compiler
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Piece.d" -MT"src/Piece.d" -o "src/Piece.o" "../src/Piece.cpp"
-Finished building: ../src/Piece.cpp
- 
-Building target: Chess
-Invoking: GCC C++ Linker
-g++  -o "Chess"  ./src/Cell.o ./src/Chess.o ./src/Piece.o   
-Finished building target: Chess
- 
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Board.d" -MT"src/Board.d" -o "src/Board.o" "../src/Board.cpp"
+../src/Board.cpp: In member function ‘bool Board::valid(int, int, Piece, Cell)’:
+../src/Board.cpp:26:14: error: ‘class Cell’ has no member named ‘isEmpty’
+     if (cell.isEmpty() != NULL){
+              ^
+../src/Board.cpp:30:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+make: *** [src/Board.o] Error 1
 
-14:17:44 Build Finished (took 5s.422ms)
+21:48:18 Build Finished (took 235ms)
 
