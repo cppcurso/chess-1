@@ -12,7 +12,8 @@ class Piece{};
 class Cell{};
 
 class Board {
-	int board[8][8];
+	Cell board[8][8];
+	unsigned int length;
 public:
 	Board();
 	void init();

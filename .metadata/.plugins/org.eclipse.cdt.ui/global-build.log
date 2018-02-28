@@ -1,13 +1,37 @@
-21:48:18 **** Incremental Build of configuration Debug for project Chess ****
+09:10:44 **** Incremental Build of configuration Debug for project Chess ****
 make all 
 Building file: ../src/Board.cpp
 Invoking: GCC C++ Compiler
 g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Board.d" -MT"src/Board.d" -o "src/Board.o" "../src/Board.cpp"
-../src/Board.cpp: In member function ‘bool Board::valid(int, int, Piece, Cell)’:
-../src/Board.cpp:26:14: error: ‘class Cell’ has no member named ‘isEmpty’
-     if (cell.isEmpty() != NULL){
-              ^
-../src/Board.cpp:30:1: warning: control reaches end of non-void function [-Wreturn-type]
- }
- ^
+In file included from ../src/Cell.h:11:0,
+                 from ../src/Board.cpp:9:
+../src/Piece.h:15:7: error: redefinition of ‘class Piece’
+ class Piece {
+       ^
+In file included from ../src/Board.cpp:8:0:
+../src/Board.h:11:7: error: previous definition of ‘class Piece’
+ class Piece{};
+       ^
+In file included from ../src/Board.cpp:9:0:
+../src/Cell.h:14:7: error: redefinition of ‘class Cell’
+ class Cell {
+       ^
+In file included from ../src/Board.cpp:8:0:
+../src/Board.h:12:7: error: previous definition of ‘class Cell’
+ class Cell{};
+       ^
+../src/Board.cpp: In constructor ‘Board::Board()’:
+../src/Board.cpp:17:23: error: no match for ‘operator=’ (operand types are ‘Cell’ and ‘long int’)
+           board[i][j] = NULL;
+                       ^
+In file included from ../src/Board.cpp:8:0:
+../src/Board.h:12:7: note: candidate: Cell& Cell::operator=(const Cell&)
+src/subdir.mk:27: fallo en las instrucciones para el objetivo 'src/Board.o'
+ class Cell{};
+       ^
+../src/Board.h:12:7: note:   no known conversion for argument 1 from ‘long int’ to ‘const Cell&’
+../src/Board.cpp: In member function ‘void Board::print()’:
+../src/Board.cpp:29:30: error: base operand of ‘->’ has non-pointer type ‘Cell’
+             cout<<board[i][j]->figure<<"";
+                              ^
 make: *** [src/Board.o] Error 1
