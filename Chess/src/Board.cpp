@@ -13,6 +13,7 @@
 #include "Rook.h"
 #include "King.h"
 #include "Queen.h"
+#include "Bishop.h"
 
 using namespace std;
 
@@ -41,22 +42,15 @@ void Board::init(){
 	board[0][7] = Cell(new Rook(true));
 	board[7][0] = Cell(new Rook(false));
 	board[7][7] = Cell(new Rook(false));
-	//board[2][0] = Cell(new Bishop(true));
-	//board[5][0] = Cell(new Bishop(true));
-	//board[2][7] = Cell(new Bishop(false));
-	//board[5][7] = Cell(new Bishop(false));
+	board[0][2] = Cell(new Bishop(true));
+	board[0][5] = Cell(new Bishop(true));
+	board[7][2] = Cell(new Bishop(false));
+	board[7][5] = Cell(new Bishop(false));
 	board[0][3] = Cell(new Queen (true));
 	board[7][4] = Cell(new Queen (false));
 	board[0][4]= Cell(new King (true));
 	board[7][3]= Cell(new King (true));
 
-<<<<<<< HEAD
-=======
-void Board::print(){ // TODO print, no funciona
-	cout<<"no funciono"<<endl;
-	for (size_t i=0; i<length; i++){
-        for (size_t j = 0; j < length; j++) {
->>>>>>> 5449beea0054c8d9f9a51172f8586a01df4a213c
 
 }
 

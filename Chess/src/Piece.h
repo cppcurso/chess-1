@@ -13,6 +13,7 @@ using namespace std;
 
 
 class Piece {
+protected:
 	int x,y;
 	bool white;
 	char figure;

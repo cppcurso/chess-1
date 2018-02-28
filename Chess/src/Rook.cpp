@@ -9,6 +9,6 @@
 
 Rook::Rook(bool white) {
 	this->white = white;
-	figure = 'P';
+	figure = 'R';
 }
 

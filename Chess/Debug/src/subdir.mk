@@ -4,6 +4,7 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
+../src/Bishop.cpp \
 ../src/Board.cpp \
 ../src/Cell.cpp \
 ../src/King.cpp \
@@ -15,6 +16,7 @@ CPP_SRCS += \
 ../src/chess.cpp 
 
 OBJS += \
+./src/Bishop.o \
 ./src/Board.o \
 ./src/Cell.o \
 ./src/King.o \
@@ -26,6 +28,7 @@ OBJS += \
 ./src/chess.o 
 
 CPP_DEPS += \
+./src/Bishop.d \
 ./src/Board.d \
 ./src/Cell.d \
 ./src/King.d \

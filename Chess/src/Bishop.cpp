@@ -9,7 +9,7 @@
 
 Bishop::Bishop(bool white) {
 	this->white = white;
-	figure = 'P';
+	figure = 'B';
 
 }
 
