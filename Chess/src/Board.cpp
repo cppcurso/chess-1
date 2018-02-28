@@ -27,8 +27,8 @@ void Board::init(){ //TODO Board::init()
 			}
 }
 
-void Board::print(){
-	cout<<"www"<<endl;
+void Board::print(){ // TODO print, no funciona
+	cout<<"no funciono"<<endl;
 	for (size_t i=0; i<length; i++){
         for (size_t j = 0; j < length; j++) {
 
