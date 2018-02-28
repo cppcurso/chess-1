@@ -13,7 +13,7 @@ Cell::Cell() {
 }
 
 Cell::Cell(Piece* piece) {
-	cell = *piece;
+	cell = piece;
 }
 Piece* Cell:: content(){
 		return cell;

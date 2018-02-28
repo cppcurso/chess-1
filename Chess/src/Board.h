@@ -8,8 +8,8 @@
 #ifndef BOARD_H_
 #define BOARD_H_
 
-class Piece{};
-class Cell{};
+#include "Cell.h"
+#include "Piece.h"
 
 class Board {
 	Cell board[8][8];
