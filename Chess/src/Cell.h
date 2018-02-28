@@ -12,6 +12,7 @@
 using namespace std;
 
 class Cell {
+	friend class Board;
 	Piece* cell;
 public:
 	bool isEmpty();
