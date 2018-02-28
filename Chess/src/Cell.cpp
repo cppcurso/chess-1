@@ -6,9 +6,23 @@
  */
 
 #include "Cell.h"
+#include "Piece.h"
 
 Cell::Cell() {
-	// TODO Auto-generated constructor stub
-
+	cell = NULL;
 }
 
+Cell::Cell(Piece* piece) {
+	cell = *piece;
+}
+Piece* Cell:: content(){
+		return cell;
+	}
+
+bool Cell:: isEmpty(){
+		if (cell == NULL) {
+			return true;
+		} else {
+			return false;
+		}
+	}

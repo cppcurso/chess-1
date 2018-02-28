@@ -14,21 +14,13 @@ using namespace std;
 class Cell {
 	Piece* cell;
 public:
-	bool isEmpty(){
-		if (cell == NULL) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+	bool isEmpty();
 
-	Piece* content(){
-		return cell;
-	}
+	Piece* content();
 
-	Cell(){
-		cell = NULL;
-	}
+	Cell (Piece* piece);
+
+	Cell();
 };
 
 #endif /* CELL_H_ */
