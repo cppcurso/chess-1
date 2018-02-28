@@ -50,6 +50,13 @@ void Board::init(){
 	board[0][4]= Cell(new King (true));
 	board[7][3]= Cell(new King (true));
 
+<<<<<<< HEAD
+=======
+void Board::print(){ // TODO print, no funciona
+	cout<<"no funciono"<<endl;
+	for (size_t i=0; i<length; i++){
+        for (size_t j = 0; j < length; j++) {
+>>>>>>> 5449beea0054c8d9f9a51172f8586a01df4a213c
 
 }
 
