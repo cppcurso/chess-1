@@ -6,19 +6,25 @@
 CPP_SRCS += \
 ../src/Board.cpp \
 ../src/Cell.cpp \
+../src/King.cpp \
 ../src/Piece.cpp \
+../src/Queen.cpp \
 ../src/chess.cpp 
 
 OBJS += \
 ./src/Board.o \
 ./src/Cell.o \
+./src/King.o \
 ./src/Piece.o \
+./src/Queen.o \
 ./src/chess.o 
 
 CPP_DEPS += \
 ./src/Board.d \
 ./src/Cell.d \
+./src/King.d \
 ./src/Piece.d \
+./src/Queen.d \
 ./src/chess.d 
 
 

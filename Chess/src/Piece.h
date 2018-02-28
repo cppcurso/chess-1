@@ -19,7 +19,7 @@ class Piece {
 public:
 	string getColour();
 	string getName();
-	virtual void move (int x, int y);
+	void move (int x, int y);
 	bool valid (int x,int y);
 
 
