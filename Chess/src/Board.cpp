@@ -8,33 +8,61 @@
 #include "Board.h"
 
 #include <iostream>
+#include "Pawn.h"
+#include "Knight.h"
+#include "Rook.h"
+#include "King.h"
+#include "Queen.h"
+
 using namespace std;
 
 Board::Board(){
 	length = (sizeof(board[8])/sizeof(int));
 }
 
-void Board::init(){ //TODO Board::init()
-			for (size_t i=0; i<length; i++){
-		        for (size_t j = 0; j < length; j++){
-		        		//Rook rook (color);
+void Board::init(){
+	for (size_t i=0; i<length; i++){
+		for (size_t j = 0; j < length; j++){
+			board[i][j].cell = NULL;
+		}
+	}
+	for (int i =0; i < 8 ; i++) {
+		board[1][i] = Cell(new Pawn(true));
+	}
 
-		        		p.setFigure('p');
-		        		Cell c1(&p);
-		        		board[i][j]= c1;
-		        	//board[i][j].cell = NULL;
-		        }
-			}
+	for (int i =0; i < 8 ; i++) {
+			board[6][i] = Cell(new Pawn(false));
+		}
+	board[0][1] = Cell(new Knight(true));
+	board[0][6] = Cell(new Knight(true));
+	board[7][1] = Cell(new Knight(false));
+	board[7][6] = Cell(new Knight(false));
+	board[0][0] = Cell(new Rook(true));
+	board[0][7] = Cell(new Rook(true));
+	board[7][0] = Cell(new Rook(false));
+	board[7][7] = Cell(new Rook(false));
+	//board[2][0] = Cell(new Bishop(true));
+	//board[5][0] = Cell(new Bishop(true));
+	//board[2][7] = Cell(new Bishop(false));
+	//board[5][7] = Cell(new Bishop(false));
+	board[0][3] = Cell(new Queen (true));
+	board[7][4] = Cell(new Queen (false));
+	board[0][4]= Cell(new King (true));
+	board[7][3]= Cell(new King (true));
+
+
 }
 
 void Board::print(){
-	cout<<"www"<<endl;
-	for (size_t i=0; i<length; i++){
-        for (size_t j = 0; j < length; j++) {
-
-            cout<<board[i][j].cell->getFigure()<<"";
-
-        } cout<<'\n';
+	for (size_t i=0; i< 8; i++){
+		cout << endl;
+        for (size_t j = 0; j < 8; j++) {
+        	if (board[i][j].cell == NULL ) {
+				cout << "0" << "  ";
+			} else {
+				cout<<board[i][j].cell->getFigure()<<"  ";
+			}
+        }
     }
 }
 
