@@ -13,6 +13,7 @@ using namespace std;
 
 
 class Piece {
+protected:
 	int x,y;
 	bool white;
 	char figure;
@@ -20,7 +21,7 @@ public:
 	string getColour();
 	string getName();
 	virtual void move (int x, int y);
-	bool valid (int x,int y);
+	virtual bool valid (int x,int y);
 
 
 	char getFigure() const {
@@ -35,9 +36,6 @@ public:
 		return white;
 	}
 
-	void setWhite(bool white) {
-		this->white = white;
-	}
 
 	int getX() const {
 		return x;

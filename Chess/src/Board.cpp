@@ -12,21 +12,28 @@ using namespace std;
 
 Board::Board(){
 	length = (sizeof(board[8])/sizeof(int));
-		for (size_t i=0; i<length; i++){
-	        for (size_t j = 0; j < length; j++){
-	        	board[i][j].cell = NULL;
-	        }
-		}
 }
 
-void Board::init(){
+void Board::init(){ //TODO Board::init()
+			for (size_t i=0; i<length; i++){
+		        for (size_t j = 0; j < length; j++){
+		        		//Rook rook (color);
 
+		        		p.setFigure('p');
+		        		Cell c1(&p);
+		        		board[i][j]= c1;
+		        	//board[i][j].cell = NULL;
+		        }
+			}
 }
 
 void Board::print(){
+	cout<<"www"<<endl;
 	for (size_t i=0; i<length; i++){
         for (size_t j = 0; j < length; j++) {
-            cout<<board[i][j].cell->getName()<<"";
+
+            cout<<board[i][j].cell->getFigure()<<"";
+
         } cout<<'\n';
     }
 }
