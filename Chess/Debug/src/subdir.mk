@@ -6,43 +6,34 @@
 CPP_SRCS += \
 ../src/Board.cpp \
 ../src/Cell.cpp \
-<<<<<<< HEAD
 ../src/King.cpp \
-../src/Piece.cpp \
-../src/Queen.cpp \
-=======
+../src/Knight.cpp \
 ../src/Pawn.cpp \
 ../src/Piece.cpp \
+../src/Queen.cpp \
 ../src/Rook.cpp \
->>>>>>> 3434bd9c13ea0032a945a33583e0d08ebe2c5d45
 ../src/chess.cpp 
 
 OBJS += \
 ./src/Board.o \
 ./src/Cell.o \
-<<<<<<< HEAD
 ./src/King.o \
-./src/Piece.o \
-./src/Queen.o \
-=======
+./src/Knight.o \
 ./src/Pawn.o \
 ./src/Piece.o \
+./src/Queen.o \
 ./src/Rook.o \
->>>>>>> 3434bd9c13ea0032a945a33583e0d08ebe2c5d45
 ./src/chess.o 
 
 CPP_DEPS += \
 ./src/Board.d \
 ./src/Cell.d \
-<<<<<<< HEAD
 ./src/King.d \
-./src/Piece.d \
-./src/Queen.d \
-=======
+./src/Knight.d \
 ./src/Pawn.d \
 ./src/Piece.d \
+./src/Queen.d \
 ./src/Rook.d \
->>>>>>> 3434bd9c13ea0032a945a33583e0d08ebe2c5d45
 ./src/chess.d 
 
 
