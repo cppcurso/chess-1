@@ -35,10 +35,10 @@ void Board::init(){
 			board[6][i] = Cell(new Pawn(false));
 		}
 
-	board[0][1] = Cell(new Knight(true));
-	board[0][6] = Cell(new Knight(true));
-	board[7][1] = Cell(new Knight(false));
-	board[7][6] = Cell(new Knight(false));
+	board[0][1] = Cell(new Knight(true, 0, 1));
+	board[0][6] = Cell(new Knight(true, 0, 6));
+	board[7][1] = Cell(new Knight(false, 7, 1));
+	board[7][6] = Cell(new Knight(false, 7, 6));
 	board[0][0] = Cell(new Rook(true));
 	board[0][7] = Cell(new Rook(true));
 	board[7][0] = Cell(new Rook(false));
