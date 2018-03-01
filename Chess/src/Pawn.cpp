@@ -18,9 +18,19 @@ Pawn::Pawn(bool white, unsigned short x, unsigned short y) {
 }
 
 bool Pawn::validMove (unsigned short x, unsigned short y){
-	if ((abs(x- this->x)<=1) && ((y - this->y) == 1)){
-		return true;
-	}else return false;
+	if (isWhite()){
+		if ((abs(x- this->x)<=1) && ((y - this->y) == 1)){
+			return true;
+		}else{
+			return false;
+		}
+	}else if (!isWhite()){
+		if ((abs(x- this->x)<=1) && ((y - this->y) == -1)){
+			return true;
+		}else{
+			return false;
+		}
+	}
 }
 
 void Pawn::move (unsigned short x, unsigned short y){

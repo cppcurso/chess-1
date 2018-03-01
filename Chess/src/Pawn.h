@@ -15,7 +15,6 @@ public:
 	Pawn(bool white, unsigned short x, unsigned short y);
 	void move(unsigned short x, unsigned short y);
 	void moveFirst(unsigned short n);
-
 	bool validMove (unsigned short x, unsigned short y);
 };
 
