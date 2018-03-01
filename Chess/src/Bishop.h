@@ -10,9 +10,8 @@
 #include "Piece.h"
 
 class Bishop: public Piece {
-	short n;
 public:
-	Bishop(bool white, short n);
+	Bishop(bool white);
 };
 
 #endif /* BISHOP_H_ */

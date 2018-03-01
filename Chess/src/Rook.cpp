@@ -8,9 +8,8 @@
 #include "Rook.h"
 #include "Piece.h"
 
-Rook::Rook(bool white, short n) {
+Rook::Rook(bool white) {
 	this->white = white;
 	figure = 'R';
-	this->n = n;
 }
 

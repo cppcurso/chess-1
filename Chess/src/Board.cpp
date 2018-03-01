@@ -27,11 +27,11 @@ void Board::init(){
 			board[i][j].cell = NULL;
 		}
 	}
-	for (int i =0; i < length ; i++) {
+	for (unsigned int i =0; i < 8 ; i++) {
 		board[1][i] = Cell(new Pawn(true));
 	}
 
-	for (int i =0; i < length ; i++) {
+	for (unsigned int i =0; i < 8 ; i++) {
 			board[6][i] = Cell(new Pawn(false));
 		}
 

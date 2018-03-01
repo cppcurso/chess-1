@@ -10,9 +10,8 @@
 #include "Piece.h"
 
 class Knight : public Piece {
-	short n;
 public:
-	Knight(bool white, short n);
+	Knight(bool white);
 };
 
 #endif /* KNIGHT_H_ */
