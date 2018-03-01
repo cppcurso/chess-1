@@ -10,10 +10,13 @@
 #include "Piece.h"
 
 class Pawn: public Piece {
+	bool firstMove;
 public:
-	Pawn(bool white);
-	void move(int x, int y);
-	void attack(int x, int y);
+	Pawn(bool white, unsigned short x, unsigned short y);
+	void move(unsigned short x, unsigned short y);
+	void moveFirst(unsigned short n);
+	void attack(Board b);
+	bool validMove (unsigned short x, unsigned short y);
 };
 
 #endif /* PAWN_H_ */
