@@ -17,12 +17,14 @@ protected:
 	int x,y;
 	bool white;
 	char figure;
+
 public:
+	virtual bool validMove (int x,int y);
+	virtual void move(int x, int y);
 	string getColour();
 	string getName();
-	void move (int x, int y);
-	bool valid (int x,int y);
 
+//	bool validMove (int x,int y);
 
 	char getFigure() const {
 		return figure;

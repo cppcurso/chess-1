@@ -11,7 +11,9 @@
 
 class Bishop: public Piece {
 public:
-	Bishop(bool white);
+	bool validMove (int x,int y);
+	void move(int x, int y);
+	Bishop(bool white, unsigned short x, unsigned short y);
 };
 
 #endif /* BISHOP_H_ */

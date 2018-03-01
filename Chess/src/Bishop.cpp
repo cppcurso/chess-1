@@ -7,8 +7,28 @@
 
 #include "Bishop.h"
 
-Bishop::Bishop(bool white) {
+Bishop::Bishop(bool white, unsigned short x, unsigned short y) {
 	this->white = white;
 	figure = 'B';
+	this->x = x;
+	this->y = y;
+}
+
+bool Bishop::validMove(int x, int y){
+	if((x-this->x)==(y-this->y))	{
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+
+void Bishop::move(int x, int y){
+	if(validMove(x, y)){
+		for(int i = this->x; i < x; i++){
+			this->x++;
+			this->y++;
+		}
+	}
 }
 
