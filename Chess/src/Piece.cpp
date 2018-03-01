@@ -22,7 +22,7 @@ string Piece::getName(){
 				case 'P':
 					name = "Paw";
 					break;
-				case 'H':
+				case 'k':
 					name = "Knight";
 					break;
 				case 'R':
