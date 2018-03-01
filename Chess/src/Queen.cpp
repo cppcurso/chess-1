@@ -7,8 +7,10 @@
 
 #include "Queen.h"
 
-Queen::Queen(bool white) {
+Queen::Queen(bool white, unsigned short x, unsigned short y) {
 	this -> white = white;
 	this -> figure = 'Q';
+	this -> x = x;
+	this -> y = y;
 }
 

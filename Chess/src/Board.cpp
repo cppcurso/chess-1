@@ -47,10 +47,10 @@ void Board::init(){
 	board[0][5] = Cell(new Bishop(true, 0, 5));
 	board[7][2] = Cell(new Bishop(false, 7, 2));
 	board[7][5] = Cell(new Bishop(false, 7, 5));
-	board[0][3] = Cell(new Queen (true));
-	board[7][4] = Cell(new Queen (false));
-	board[0][4]= Cell(new King (true));
-	board[7][3]= Cell(new King (false));
+	board[0][3] = Cell(new Queen (true, 0, 3));
+	board[7][4] = Cell(new Queen (false, 7,4));
+	board[0][4]= Cell(new King (true, 0, 4));
+	board[7][3]= Cell(new King (false, 7, 3));
 }
 
 void Board::print(){

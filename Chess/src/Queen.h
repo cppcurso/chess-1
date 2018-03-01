@@ -11,7 +11,7 @@
 class Queen : public Piece{
 public:
 
-	Queen(bool white);
+	Queen(bool white, unsigned short x, unsigned short y);
 };
 
 #endif /* QUEEN_H_ */
