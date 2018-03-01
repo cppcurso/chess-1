@@ -20,6 +20,22 @@ void Knight::move (int x, int y){
 }
 
 bool Knight::validMove (int x, int y){
+
+	if (x == this -> x + 2 || x == this -> x - 2 ) {
+		if (y== this -> y +1 || y== this -> y -1){
+			return true;
+		} else return false;
+	}
+	else if (y == this -> y + 2 || y == this -> y - 2 ){
+		if (x== this -> x +1 || x== this -> x -1){
+					return true;
+				} else return false;
+	}
+	else return false;
+}
+
+
+// validMove por si no funciona
 //	if (x == this -> x + 2) {
 //		if (y== this -> y +1 || y== this -> y -1) {
 //			return true;
@@ -44,15 +60,3 @@ bool Knight::validMove (int x, int y){
 //			} else {
 //				return false;
 //		}
-	if (x == this -> x + 2 || x == this -> x - 2 ) {
-		if (y== this -> y +1 || y== this -> y -1){
-			return true;
-		}
-	}
-	else if (y == this -> y + 2 || y == this -> y - 2 ){
-		if (x== this -> x +1 || x== this -> x -1){
-					return true;
-				}
-	}
-	else return false;
-}
