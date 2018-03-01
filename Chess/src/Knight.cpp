@@ -7,10 +7,9 @@
 
 #include "Knight.h"
 
-
-Knight::Knight(bool white) {
+Knight::Knight(bool white, short n) {
 	this -> white = white;
 	this -> figure = 'H';
-
+	this->n = n;
 }
 

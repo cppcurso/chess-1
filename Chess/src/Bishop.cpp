@@ -7,9 +7,9 @@
 
 #include "Bishop.h"
 
-Bishop::Bishop(bool white) {
+Bishop::Bishop(bool white, short n) {
 	this->white = white;
 	figure = 'B';
-
+	this->n = n;
 }
 

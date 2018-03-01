@@ -8,9 +8,11 @@
 #ifndef BISHOP_H_
 #define BISHOP_H_
 #include "Piece.h"
-class Bishop : public Piece {
+
+class Bishop: public Piece {
+	short n;
 public:
-	Bishop(bool white);
+	Bishop(bool white, short n);
 };
 
 #endif /* BISHOP_H_ */

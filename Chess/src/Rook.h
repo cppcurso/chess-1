@@ -10,8 +10,9 @@
 #include "Piece.h"
 
 class Rook: public Piece {
+	short n;
 public:
-	Rook(bool white);
+	Rook(bool white, short n);
 	void move(int x, int y);
 	void attack(int x, int y);
 };

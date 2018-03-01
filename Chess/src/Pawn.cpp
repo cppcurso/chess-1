@@ -7,9 +7,9 @@
 
 #include "Pawn.h"
 
-Pawn::Pawn(bool white) {
+Pawn::Pawn(bool white, short n) {
 	this->white = white;
 	figure = 'P';
-
+	this->n = n;
 }
 

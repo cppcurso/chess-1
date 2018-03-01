@@ -10,8 +10,9 @@
 #include "Piece.h"
 
 class Pawn: public Piece {
+	short n;
 public:
-	Pawn(bool white);
+	Pawn(bool white, short n);
 	void move(int x, int y);
 	void attack(int x, int y);
 };

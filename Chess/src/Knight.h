@@ -8,9 +8,11 @@
 #ifndef KNIGHT_H_
 #define KNIGHT_H_
 #include "Piece.h"
+
 class Knight : public Piece {
+	short n;
 public:
-	Knight(bool white);
+	Knight(bool white, short n);
 };
 
 #endif /* KNIGHT_H_ */
