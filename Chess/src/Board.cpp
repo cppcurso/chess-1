@@ -22,18 +22,19 @@ Board::Board(){
 }
 
 void Board::init(){
-	for (size_t i=0; i<length; i++){
+	for (size_t i=2; i<7; i++){
 		for (size_t j = 0; j < length; j++){
 			board[i][j].cell = NULL;
 		}
 	}
-	for (int i =0; i < 8 ; i++) {
+	for (int i =0; i < length ; i++) {
 		board[1][i] = Cell(new Pawn(true));
 	}
 
-	for (int i =0; i < 8 ; i++) {
+	for (int i =0; i < length ; i++) {
 			board[6][i] = Cell(new Pawn(false));
 		}
+
 	board[0][1] = Cell(new Knight(true));
 	board[0][6] = Cell(new Knight(true));
 	board[7][1] = Cell(new Knight(false));
@@ -50,8 +51,6 @@ void Board::init(){
 	board[7][4] = Cell(new Queen (false));
 	board[0][4]= Cell(new King (true));
 	board[7][3]= Cell(new King (true));
-
-
 }
 
 void Board::print(){
