@@ -6,7 +6,7 @@
  */
 
 #include "Pawn.h"
-#include "Board.h"
+
 #include <stdlib.h>
 
 Pawn::Pawn(bool white, unsigned short x, unsigned short y) {

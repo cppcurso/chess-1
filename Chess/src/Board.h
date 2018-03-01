@@ -20,6 +20,7 @@ public:
 	void print();
 	bool valid(int x, int y, Piece , Cell cell);
 	void move(int x, int y, Piece piece);
+	//void attack(Board b);
 };
 
 #endif /* BOARD_H_ */
