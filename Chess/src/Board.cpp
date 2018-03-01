@@ -50,7 +50,7 @@ void Board::init(){
 	board[0][3] = Cell(new Queen (true));
 	board[7][4] = Cell(new Queen (false));
 	board[0][4]= Cell(new King (true));
-	board[7][3]= Cell(new King (true));
+	board[7][3]= Cell(new King (false));
 }
 
 void Board::print(){
