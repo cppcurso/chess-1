@@ -13,12 +13,12 @@ Rook::Rook(bool white, unsigned short x, unsigned short y) {
 	figure = 'R';
 }
 
-void Rook::move(int x, int y){
+void Rook::move(unsigned short x, unsigned short y){
 	this->x = x;
 	this->y = y;
 }
 
-bool Rook::validMove(int x, int y){
+bool Rook::validMove(unsigned short x, unsigned short y){
 	if (x == this->x){
 		return true;
 	} else if (y == this->y){
