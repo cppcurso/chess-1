@@ -7,8 +7,10 @@
 
 #include "Pawn.h"
 
-Pawn::Pawn(bool white) {
+Pawn::Pawn(bool white, unsigned short x, unsigned short y) {
 	this->white = white;
 	figure = 'P';
+	this->x =x;
+	this->y = y;
 }
 

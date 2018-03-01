@@ -28,11 +28,11 @@ void Board::init(){
 		}
 	}
 	for (unsigned int i =0; i < 8 ; i++) {
-		board[1][i] = Cell(new Pawn(true));
+		board[1][i] = Cell(new Pawn(true,1,i));
 	}
 
 	for (unsigned int i =0; i < 8 ; i++) {
-			board[6][i] = Cell(new Pawn(false));
+			board[6][i] = Cell(new Pawn(false,6,i));
 		}
 
 	board[0][1] = Cell(new Knight(true, 0, 1));

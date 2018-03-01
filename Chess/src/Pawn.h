@@ -11,7 +11,7 @@
 
 class Pawn: public Piece {
 public:
-	Pawn(bool white);
+	Pawn(bool white, unsigned short x, unsigned short y);
 	void move(int x, int y);
 	void attack(int x, int y);
 };
