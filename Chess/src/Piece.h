@@ -19,8 +19,8 @@ protected:
 	char figure;
 
 public:
-	virtual bool validMove (int x,int y);
-	virtual void move(int x, int y);
+	virtual bool validMove (unsigned short x,unsigned short y);
+	virtual void move(unsigned short x, unsigned short y);
 	string getColour();
 	string getName();
 
@@ -42,19 +42,19 @@ public:
 		this->white = white;
 	}
 
-	int getX() const {
+	unsigned short getX() const {
 		return x;
 	}
 
-	void setX(int x) {
+	void setX(unsigned short x) {
 		this->x = x;
 	}
 
-	int getY() const {
+	unsigned short getY() const {
 		return y;
 	}
 
-	void setY(int y) {
+	void setY(unsigned short y) {
 		this->y = y;
 	}
 };
