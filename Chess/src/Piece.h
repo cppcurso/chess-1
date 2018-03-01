@@ -19,8 +19,8 @@ protected:
 	char figure;
 
 public:
-	virtual bool validMove (unsigned short x,unsigned short y);
-	virtual void move(unsigned short x, unsigned short y);
+	virtual bool validMove (unsigned short x,unsigned short y) = 0;
+	virtual void move(unsigned short x, unsigned short y) = 0;
 	string getColour();
 	string getName();
 
