@@ -51,17 +51,3 @@ void Pawn::attack(Board b){
 		x = x2;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

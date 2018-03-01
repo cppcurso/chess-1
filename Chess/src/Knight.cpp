@@ -7,8 +7,56 @@
 
 #include "Knight.h"
 
-Knight::Knight(bool white) {
+Knight::Knight(bool white, unsigned short x, unsigned short y) {
 	this -> white = white;
 	this -> figure = 'k';
+	this -> x = x;
+	this -> y = y;
 }
 
+void Knight::move (int x, int y){
+	this -> x = x;
+	this -> y = y;
+}
+
+bool Knight::validMove (int x, int y){
+
+	if (x == this -> x + 2 || x == this -> x - 2 ) {
+		if (y== this -> y +1 || y== this -> y -1){
+			return true;
+		} else return false;
+	}
+	else if (y == this -> y + 2 || y == this -> y - 2 ){
+		if (x== this -> x +1 || x== this -> x -1){
+					return true;
+				} else return false;
+	}
+	else return false;
+}
+
+
+// validMove por si no funciona
+//	if (x == this -> x + 2) {
+//		if (y== this -> y +1 || y== this -> y -1) {
+//			return true;
+//		} else {
+//			return false;
+//		}
+//	}
+//	if (x == this -> x - 2) {
+//		if (y== this -> y +1 || y== this -> y -1){
+//			return true;
+//			}else {return false;}
+//		}
+//	if (y == this -> y + 2) {
+//			if (x== this -> x +1 || y== this -> x -1) {
+//				return true;
+//			}else {return false;}
+//		}
+//	else if (y == this -> y - 2) {
+//				if (x== this -> x +1 || y== this -> x -1) {
+//					return true;
+//				}
+//			} else {
+//				return false;
+//		}

@@ -13,7 +13,7 @@
 class King : public Piece {
 public:
 
-	King(bool white);
+	King(bool white, unsigned short x, unsigned short y);
 };
 
 #endif /* KING_H_ */

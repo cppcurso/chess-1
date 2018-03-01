@@ -11,7 +11,9 @@
 
 class Knight : public Piece {
 public:
-	Knight(bool white);
+	void move (int x, int y);
+	bool validMove (int x, int y);
+	Knight(bool white, unsigned short x, unsigned short y);
 };
 
 #endif /* KNIGHT_H_ */
