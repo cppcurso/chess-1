@@ -9,18 +9,18 @@
 #include "Piece.h"
 
 Cell::Cell() {
-	cell = NULL;
+	piece = NULL;
 }
 
 Cell::Cell(Piece* piece) {
-	cell = piece;
+	this->piece = piece;
 }
 Piece* Cell:: content(){
-		return cell;
+		return piece;
 	}
 
 bool Cell:: isEmpty(){
-		if (cell == NULL) {
+		if (piece == NULL) {
 			return true;
 		} else {
 			return false;

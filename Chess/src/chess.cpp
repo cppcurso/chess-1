@@ -10,8 +10,9 @@
 using namespace std;
 
 int main() {
-	Board board;
-	board.init();
-	board.print();
+	Board b;
+	b.init();
+	b.move(b.board[0][1],0,2);
+	b.print();
 
 }

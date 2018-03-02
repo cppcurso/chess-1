@@ -24,14 +24,14 @@ Board::Board(){
 void Board::init(){
 	for (size_t i=2; i<7; i++){
 		for (size_t j = 0; j < length; j++){
-			board[i][j].cell = NULL;
+			board[i][j].piece = NULL;
 		}
 	}
-	for (unsigned int i =0; i < 8 ; i++) {
+	for (unsigned int i =0; i < length ; i++) {
 		board[i][1] = Cell(new Pawn(true,1,i));
 	}
 
-	for (unsigned int i =0; i < 8 ; i++) {
+	for (unsigned int i =0; i < length ; i++) {
 			board[i][6] = Cell(new Pawn(false,6,i));
 		}
 
@@ -57,21 +57,21 @@ void Board::print(){
 	for (size_t i=0; i< 8; i++){
 		cout << endl;
         for (size_t j = 0; j < 8; j++) {
-        	if (board[j][i].cell == NULL ) {
+        	if (board[j][i].piece == NULL ) {
 				cout << "0" << "  ";
 			} else {
-				cout<<board[j][i].cell->getFigure()<<"  ";
+				cout<<board[j][i].piece->getFigure()<<"  ";
 			}
         }
     }
 }
 
-bool Board::valid (unsigned short x, unsigned short y, Cell c){
+bool Board::valid (unsigned short x, unsigned short y, Cell c){ // Cell c es la celda inicial
 	if (x<8 && y<8){ // no se sale del tablero
-		if (board[x][y].isEmpty() || (board[x][y].cell->isWhite()!= c.cell->isWhite())){// está vacía o hay una del otro color
-			unsigned short x0 = board[x][y].cell->getX();
-			unsigned short y0 = board[x][y].cell->getY();
-			switch (board[x][y].cell->getFigure()){
+		if (board[x][y].isEmpty() || (board[x][y].piece->isWhite()!= c.piece->isWhite())){// está vacía o hay una del otro color
+			unsigned short x0 = c.piece->getX();
+			unsigned short y0 = c.piece->getY();
+			switch (board[x][y].piece->getFigure()){
 			case 'B':
 				while ((x0-x) != 0 && (y0-y) != 0){
 					x0++;
@@ -113,11 +113,17 @@ bool Board::valid (unsigned short x, unsigned short y, Cell c){
 							return false;
 					}return true;
 				}
-			default:
-				return true;
-			}
-		}return false;
-	}return false;
+			}return true;
+		}else return false;
+	}else return false;
+}
+
+void Board::move(Cell& c, unsigned short x, unsigned short y){
+	//if (board[x][y].cell->validMove(x,y)&&valid(x,y,c)){
+		c.piece->move(x,y);
+		board[x][y].piece = c.piece;
+		c.piece = NULL;
+	//}
 }
 
 
