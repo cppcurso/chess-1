@@ -57,6 +57,7 @@ public:
 	void setY(unsigned short y) {
 		this->y = y;
 	}
+	virtual ~Piece(){}
 };
 
 #endif /* PIECE_H_ */

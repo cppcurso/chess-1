@@ -18,8 +18,8 @@ public:
 	Board();
 	void init();
 	void print();
-	bool valid(int x, int y, Piece , Cell cell);
-	void move(int x, int y, Piece piece);
+	bool valid(unsigned short x, unsigned short y, Cell cell);
+	void move(unsigned short x, unsigned short y);
 	//void attack(Board b);
 };
 

@@ -14,7 +14,7 @@ Bishop::Bishop(bool white, unsigned short x, unsigned short y) {
 	this->y = y;
 }
 
-bool Bishop::validMove(int x, int y){
+bool Bishop::validMove(unsigned short x, unsigned short y){
 	if((x-this->x)==(y-this->y))	{
 		return true;
 	}
@@ -23,7 +23,7 @@ bool Bishop::validMove(int x, int y){
 	}
 }
 
-void Bishop::move(int x, int y){
+void Bishop::move(unsigned short x, unsigned short y){
 	if(validMove(x, y)){
 		for(int i = this->x; i < x; i++){
 			this->x++;

@@ -31,7 +31,9 @@ bool Pawn::validMove (unsigned short x, unsigned short y){
 			return false;
 		}
 	}
+	return false;
 }
+
 
 void Pawn::move (unsigned short x, unsigned short y){
 	if (validMove(x, y)){

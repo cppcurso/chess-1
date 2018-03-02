@@ -11,8 +11,8 @@
 
 class Bishop: public Piece {
 public:
-	bool validMove (int x,int y);
-	void move(int x, int y);
+	bool validMove (unsigned short x, unsigned short y);
+	void move(unsigned short x, unsigned short y);
 	Bishop(bool white, unsigned short x, unsigned short y);
 };
 

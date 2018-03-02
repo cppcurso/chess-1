@@ -11,8 +11,8 @@
 
 class Knight : public Piece {
 public:
-	void move (int x, int y);
-	bool validMove (int x, int y);
+	void move (unsigned short x, unsigned short y);
+	bool validMove (unsigned short x, unsigned short y);
 	Knight(bool white, unsigned short x, unsigned short y);
 };
 

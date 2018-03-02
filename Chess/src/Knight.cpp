@@ -14,12 +14,12 @@ Knight::Knight(bool white, unsigned short x, unsigned short y) {
 	this -> y = y;
 }
 
-void Knight::move (int x, int y){
+void Knight::move(unsigned short x, unsigned short y){
 	this -> x = x;
 	this -> y = y;
 }
 
-bool Knight::validMove (int x, int y){
+bool Knight::validMove (unsigned short x, unsigned short y){
 
 	if (x == this -> x + 2 || x == this -> x - 2 ) {
 		if (y== this -> y +1 || y== this -> y -1){
