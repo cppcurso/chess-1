@@ -28,11 +28,11 @@ void Board::init(){
 		}
 	}
 	for (unsigned int i =0; i < length ; i++) {
-		board[i][1] = Cell(new Pawn(true,1,i));
+		board[i][1] = Cell(new Pawn(true,i,1));
 	}
 
 	for (unsigned int i =0; i < length ; i++) {
-			board[i][6] = Cell(new Pawn(false,6,i));
+			board[i][6] = Cell(new Pawn(false,i,6));
 		}
 
 	board[1][0] = Cell(new Knight(true, 1, 0));
@@ -63,7 +63,7 @@ void Board::print(){
 				cout<<board[j][i].piece->getFigure()<<"  ";
 			}
         }
-    }
+    } cout<<endl;
 }
 
 bool Board::valid (unsigned short x, unsigned short y, Cell c){ // Cell c es la celda inicial
@@ -71,7 +71,7 @@ bool Board::valid (unsigned short x, unsigned short y, Cell c){ // Cell c es la 
 		if (board[x][y].isEmpty() || (board[x][y].piece->isWhite()!= c.piece->isWhite())){// está vacía o hay una del otro color
 			unsigned short x0 = c.piece->getX();
 			unsigned short y0 = c.piece->getY();
-			switch (board[x][y].piece->getFigure()){
+			switch (board[x0][y0].piece->getFigure()){
 			case 'B':
 				while ((x0-x) != 0 && (y0-y) != 0){
 					x0++;
@@ -82,8 +82,9 @@ bool Board::valid (unsigned short x, unsigned short y, Cell c){ // Cell c es la 
 			case 'R':
 				if (x0 == x){
 					for (unsigned short i =(y0+1); i<y; i++){
-						if (!board[x0][i].isEmpty())
+						if (!board[x0][i].isEmpty()){
 							return false;
+						}
 					} return true;
 				}
 				else if (y0==y){
@@ -113,17 +114,22 @@ bool Board::valid (unsigned short x, unsigned short y, Cell c){ // Cell c es la 
 							return false;
 					}return true;
 				}
-			}return true;
+			default:
+				return true;
+			}
+			return true;
 		}else return false;
 	}else return false;
 }
 
-void Board::move(Cell& c, unsigned short x, unsigned short y){
-	//if (board[x][y].cell->validMove(x,y)&&valid(x,y,c)){
+void Board::move(Cell c, unsigned short x, unsigned short y){
+	unsigned short x0 = c.piece->getX();
+	unsigned short y0 = c.piece->getY();
+	if (valid(x,y,c)&&c.piece->validMove(x,y)){
 		c.piece->move(x,y);
 		board[x][y].piece = c.piece;
-		c.piece = NULL;
-	//}
+		board[x0][y0].piece = NULL;
+	}
 }
 
 

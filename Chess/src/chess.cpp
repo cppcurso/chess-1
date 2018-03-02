@@ -12,7 +12,17 @@ using namespace std;
 int main() {
 	Board b;
 	b.init();
-	b.move(b.board[0][1],0,2);
 	b.print();
-
+	b.move(b.board[3][1],3,2);
+	b.print();
+	b.move(b.board[0][0],0,4);
+	b.print();
+	b.move(b.board[1][0],2,2);
+	b.print();
+	b.move(b.board[3][0],3,1);
+	b.print();
+	b.move(b.board[4][0],3,0);
+	b.print();
+	b.move(b.board[0][6],1,5);
+	b.print();
 }
