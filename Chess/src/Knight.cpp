@@ -11,7 +11,7 @@ Knight::Knight(bool white, unsigned short x, unsigned short y) {
 	this -> white = white;
 	this -> figure = 'k';
 	this -> x = x;
-//	this -> y = y;
+	this -> y = y;
 }
 
 void Knight::move(unsigned short x, unsigned short y){
