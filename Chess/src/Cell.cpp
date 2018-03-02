@@ -19,7 +19,7 @@ Piece* Cell:: content(){
 		return cell;
 	}
 
-bool Cell:: isEmpty(){
+bool Cell:: isEmpty(){ //Comprueba si esta vacia
 		if (cell == NULL) {
 			return true;
 		} else {
