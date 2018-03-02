@@ -36,10 +36,8 @@ bool Pawn::validMove (unsigned short x, unsigned short y){
 
 
 void Pawn::move (unsigned short x, unsigned short y){
-	if (validMove(x, y)){
-		this->x = x;
-		this->y = y;
-	}
+	this->x = x;
+	this->y = y;
 }
 
 void Pawn::moveFirst (unsigned short n){

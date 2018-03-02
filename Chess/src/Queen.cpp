@@ -16,10 +16,8 @@ bool Queen::validMove(unsigned short x, unsigned short y){
 }
 
 void Queen::move(unsigned short x, unsigned short y){
-	if(validMove(x, y)){
-			this->x = x;
-			this->y = y;
-	}
+	this->x = x;
+	this->y = y;
 }
 
 Queen::Queen(bool white, unsigned short x, unsigned short y) {

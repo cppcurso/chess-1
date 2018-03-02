@@ -17,10 +17,8 @@ bool King::validMove(unsigned short x, unsigned short y){
 }
 
 void King::move(unsigned short x, unsigned short y){
-	if(validMove(x, y)){
-			this->x = x;
-			this->y = y;
-	}
+	this->x = x;
+	this->y = y;
 }
 
 King::King(bool white, unsigned short x, unsigned short y) {
