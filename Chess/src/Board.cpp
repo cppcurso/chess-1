@@ -66,12 +66,59 @@ void Board::print(){
     }
 }
 
-//bool Board::valid (int x, int y, Piece piece, Cell cell){
-//    if (cell.isEmpty() && x<8 && y<8)
-//    	return true;
-//    else
-//    	return false;
-//}
+bool Board::valid (unsigned short x, unsigned short y, Cell c){
+	if (x<8 && y<8){ // no se sale del tablero
+		if (board[x][y].isEmpty() || (board[x][y].cell->isWhite()!= c.cell->isWhite())){// está vacía o hay una del otro color
+			unsigned short x0 = board[x][y].cell->getX();
+			unsigned short y0 = board[x][y].cell->getY();
+			switch (board[x][y].cell->getFigure()){
+			case 'B':
+				while ((x0-x) != 0 && (y0-y) != 0){
+					x0++;
+					y0++;
+					if (!board[x0][y0].isEmpty())
+						return false;
+				}return true;
+			case 'R':
+				if (x0 == x){
+					for (unsigned short i =(y0+1); i<y; i++){
+						if (!board[x0][i].isEmpty())
+							return false;
+					} return true;
+				}
+				else if (y0==y){
+					for (unsigned short i =(x0+1); i<x; i++){
+						if (!board[i][y0].isEmpty())
+							return false;
+					}return true;
+				}return false;
+			case 'Q':
+				if (x0 == x){
+					for (unsigned short i =(y0+1); i<y; i++){
+						if (!board[x0][i].isEmpty())
+							return false;
+					} return true;
+				}
+				else if (y0==y){
+					for (unsigned short i =(x0+1); i<x; i++){
+						if (!board[i][y0].isEmpty())
+							return false;
+					}return true;
+				}
+				else {
+					while ((x0-x) != 0 && (y0-y) != 0){
+						x0++;
+						y0++;
+						if (!board[x0][y0].isEmpty())
+							return false;
+					}return true;
+				}
+			default:
+				return true;
+			}
+		}return false;
+	}return false;
+}
 
 
 //void Pawn::attack(Board b){
