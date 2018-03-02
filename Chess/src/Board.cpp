@@ -24,15 +24,15 @@ Board::Board(){
 void Board::init(){
 	for (size_t i=2; i<7; i++){
 		for (size_t j = 0; j < length; j++){
-			board[i][j].cell = NULL;
+			board[i][j].piece = NULL;
 		}
 	}
-	for (unsigned int i =0; i < 8 ; i++) {
-		board[i][1] = Cell(new Pawn(true,1,i));
+	for (unsigned int i =0; i < length ; i++) {
+		board[i][1] = Cell(new Pawn(true,i,1));
 	}
 
-	for (unsigned int i =0; i < 8 ; i++) {
-			board[i][6] = Cell(new Pawn(false,6,i));
+	for (unsigned int i =0; i < length ; i++) {
+			board[i][6] = Cell(new Pawn(false,i,6));
 		}
 
 	board[1][0] = Cell(new Knight(true, 1, 0));
@@ -57,21 +57,21 @@ void Board::print(){
 	for (size_t i=0; i< 8; i++){
 		cout << endl;
         for (size_t j = 0; j < 8; j++) {
-        	if (board[j][i].cell == NULL ) {
+        	if (board[j][i].piece == NULL ) {
 				cout << "0" << "  ";
 			} else {
-				cout<<board[j][i].cell->getFigure()<<"  ";
+				cout<<board[j][i].piece->getFigure()<<"  ";
 			}
         }
-    }
+    } cout<<endl;
 }
 
-bool Board::valid (unsigned short x, unsigned short y, Cell c){
+bool Board::valid (unsigned short x, unsigned short y, Cell c){ // Cell c es la celda inicial
 	if (x<8 && y<8){ // no se sale del tablero
-		if (board[x][y].isEmpty() || (board[x][y].cell->isWhite()!= c.cell->isWhite())){// está vacía o hay una del otro color
-			unsigned short x0 = board[x][y].cell->getX();
-			unsigned short y0 = board[x][y].cell->getY();
-			switch (board[x][y].cell->getFigure()){
+		if (board[x][y].isEmpty() || (board[x][y].piece->isWhite()!= c.piece->isWhite())){// está vacía o hay una del otro color
+			unsigned short x0 = c.piece->getX();
+			unsigned short y0 = c.piece->getY();
+			switch (board[x0][y0].piece->getFigure()){
 			case 'B':
 				while ((x0-x) != 0 && (y0-y) != 0){
 					x0++;
@@ -82,8 +82,9 @@ bool Board::valid (unsigned short x, unsigned short y, Cell c){
 			case 'R':
 				if (x0 == x){
 					for (unsigned short i =(y0+1); i<y; i++){
-						if (!board[x0][i].isEmpty())
+						if (!board[x0][i].isEmpty()){
 							return false;
+						}
 					} return true;
 				}
 				else if (y0==y){
@@ -113,11 +114,29 @@ bool Board::valid (unsigned short x, unsigned short y, Cell c){
 							return false;
 					}return true;
 				}
+			case 'P':
+				if ((x0 != x && y0 != y) && !board[x][y].isEmpty())
+					return true;
+				else if(x0 == x)
+					return true;
+				else
+					return false;
 			default:
 				return true;
 			}
-		}return false;
-	}return false;
+			return true;
+		}else return false;
+	}else return false;
+}
+
+void Board::move(Cell c, unsigned short x, unsigned short y){
+	unsigned short x0 = c.piece->getX();
+	unsigned short y0 = c.piece->getY();
+	if (valid(x,y,c)&&c.piece->validMove(x,y)){
+		c.piece->move(x,y);
+		board[x][y].piece = c.piece;
+		board[x0][y0].piece = NULL;
+	}
 }
 
 
