@@ -114,6 +114,13 @@ bool Board::valid (unsigned short x, unsigned short y, Cell c){ // Cell c es la 
 							return false;
 					}return true;
 				}
+			case 'P':
+				if ((x0 != x && y0 != y) && !board[x][y].isEmpty())
+					return true;
+				else if(x0 == x)
+					return true;
+				else
+					return false;
 			default:
 				return true;
 			}
