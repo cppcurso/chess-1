@@ -12,9 +12,11 @@
 #include "Piece.h"
 
 class Board {
+
+
+public:
 	Cell board[8][8];
 	unsigned int length;
-public:
 	Board();
 	void init();
 	void print();

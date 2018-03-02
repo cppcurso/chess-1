@@ -28,39 +28,39 @@ void Board::init(){
 		}
 	}
 	for (unsigned int i =0; i < 8 ; i++) {
-		board[1][i] = Cell(new Pawn(true,1,i));
+		board[i][1] = Cell(new Pawn(true,1,i));
 	}
 
 	for (unsigned int i =0; i < 8 ; i++) {
-			board[6][i] = Cell(new Pawn(false,6,i));
+			board[i][6] = Cell(new Pawn(false,6,i));
 		}
 
-	board[0][1] = Cell(new Knight(true, 0, 1));
-	board[0][6] = Cell(new Knight(true, 0, 6));
-	board[7][1] = Cell(new Knight(false, 7, 1));
-	board[7][6] = Cell(new Knight(false, 7, 6));
+	board[1][0] = Cell(new Knight(true, 1, 0));
+	board[6][0] = Cell(new Knight(true, 6, 0));
+	board[1][7] = Cell(new Knight(false, 1, 7));
+	board[6][7] = Cell(new Knight(false, 6, 7));
 	board[0][0] = Cell(new Rook(true, 0,0));
-	board[0][7] = Cell(new Rook(true, 0,7));
-	board[7][0] = Cell(new Rook(false,7, 0));
+	board[7][0] = Cell(new Rook(true, 7,0));
+	board[0][7] = Cell(new Rook(false,0, 7));
 	board[7][7] = Cell(new Rook(false, 7, 7));
-	board[0][2] = Cell(new Bishop(true, 0, 2));
-	board[0][5] = Cell(new Bishop(true, 0, 5));
-	board[7][2] = Cell(new Bishop(false, 7, 2));
-	board[7][5] = Cell(new Bishop(false, 7, 5));
-	board[0][3] = Cell(new Queen (true, 0, 3));
-	board[7][4] = Cell(new Queen (false, 7,4));
-	board[0][4]= Cell(new King (true, 0, 4));
-	board[7][3]= Cell(new King (false, 7, 3));
+	board[2][0] = Cell(new Bishop(true, 2, 0));
+	board[5][0] = Cell(new Bishop(true, 5, 0));
+	board[2][7] = Cell(new Bishop(false, 2, 7));
+	board[5][7] = Cell(new Bishop(false, 5, 7));
+	board[3][0] = Cell(new Queen (true, 3, 0));
+	board[4][7] = Cell(new Queen (false, 4,7));
+	board[4][0]= Cell(new King (true, 4, 0));
+	board[3][7]= Cell(new King (false, 3, 7));
 }
 
 void Board::print(){
 	for (size_t i=0; i< 8; i++){
 		cout << endl;
         for (size_t j = 0; j < 8; j++) {
-        	if (board[i][j].cell == NULL ) {
+        	if (board[j][i].cell == NULL ) {
 				cout << "0" << "  ";
 			} else {
-				cout<<board[i][j].cell->getFigure()<<"  ";
+				cout<<board[j][i].cell->getFigure()<<"  ";
 			}
         }
     }
