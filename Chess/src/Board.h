@@ -12,10 +12,12 @@
 #include "Piece.h"
 
 class Board {
-public:
-	Cell board[8][8];
 	unsigned int length;
+	static const short dimension = 8;
 	Board();
+public:
+	Cell board[dimension][dimension];
+	static Board& getInstance();
 	void init();
 	void print();
 	bool valid(unsigned short x, unsigned short y, Cell c);

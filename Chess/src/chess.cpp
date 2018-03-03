@@ -10,19 +10,19 @@
 using namespace std;
 
 int main() {
-	Board b;
-	b.init();
-	b.print();
-	b.move(b.board[3][1],3,2);
-	b.print();
-	b.move(b.board[0][0],0,4);
-	b.print();
-	b.move(b.board[1][0],2,2);
-	b.print();
-	b.move(b.board[3][0],3,1);
-	b.print();
-	b.move(b.board[4][0],3,0);
-	b.print();
-	b.move(b.board[0][6],1,5);
-	b.print();
+	Board::getInstance();
+	Board::getInstance().init();
+	Board::getInstance().print();
+	Board::getInstance().move(Board::getInstance().board[3][1],3,2);
+	Board::getInstance().print();
+	Board::getInstance().move(Board::getInstance().board[0][0],0,4);
+	Board::getInstance().print();
+	Board::getInstance().move(Board::getInstance().board[1][0],2,2);
+	Board::getInstance().print();
+	Board::getInstance().move(Board::getInstance().board[3][0],3,1);
+	Board::getInstance().print();
+	Board::getInstance().move(Board::getInstance().board[4][0],3,0);
+	Board::getInstance().print();
+	Board::getInstance().move(Board::getInstance().board[0][6],1,5);
+	Board::getInstance().print();
 }

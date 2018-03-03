@@ -17,6 +17,11 @@
 
 using namespace std;
 
+Board& Board:: getInstance(){
+	static Board instance;
+	return instance;
+}
+
 Board::Board(){
 	length = (sizeof(board[8])/sizeof(int));
 }
@@ -55,16 +60,16 @@ void Board::init(){
 
 void Board::print(){
 	for (size_t i=0; i< 8; i++){
-		cout << endl;
         for (size_t j = 0; j < 8; j++) {
         	if (board[j][i].piece == NULL ) {
 				cout << "0" << "  ";
 			} else {
 				cout<<board[j][i].piece->getFigure()<<"  ";
 			}
-        }
+        }cout << endl;
     } cout<<endl;
 }
+
 
 bool Board::valid (unsigned short x, unsigned short y, Cell c){ // Cell c es la celda inicial
 	if (x<8 && y<8){ // no se sale del tablero
@@ -132,7 +137,7 @@ bool Board::valid (unsigned short x, unsigned short y, Cell c){ // Cell c es la 
 void Board::move(Cell c, unsigned short x, unsigned short y){
 	unsigned short x0 = c.piece->getX();
 	unsigned short y0 = c.piece->getY();
-	if (valid(x,y,c)&&c.piece->validMove(x,y)){
+	if (valid(x,y,c) && c.piece->validMove(x,y)){
 		c.piece->move(x,y);
 		board[x][y].piece = c.piece;
 		board[x0][y0].piece = NULL;
@@ -145,7 +150,7 @@ void Board::move(Cell c, unsigned short x, unsigned short y){
 //	unsigned short x1 = x+1;
 //	unsigned short x2 = x-1;
 //	if (!b.board[x1][y].isEmpty() && b.board[x2][y].isEmpty()){
-//		if ((b.board[x1][y].cell->isWhite()&& !white) || (!b.board[x1][y].cell->isWhite()&& white)){
+//		if ((b.board[x1][y].piece->isWhite() != !white){
 //		b.board[x1][y] = NULL;
 //		x = x1;
 //		}
