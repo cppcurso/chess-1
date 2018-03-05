@@ -10,7 +10,7 @@
 #include <stdlib.h>
 
 Pawn::Pawn(bool white, unsigned short x, unsigned short y) {
-	firstMove = false;
+	firstMove = true;
 	this->x = x;
 	this->y = y;
 	this->white = white;
@@ -20,19 +20,22 @@ Pawn::Pawn(bool white, unsigned short x, unsigned short y) {
 
 bool Pawn::validMove (unsigned short x, unsigned short y){
 	if (isWhite()){
-		if ((abs(x- this->x)<=1) && ((y - this->y) == 1)){
+		if ((abs(x- this->x)<=1) && ((y - this->y) == 1)){ // attack movement o normal (white)
 			return true;
-		}else{
-			return false;
+		}
+		else if (((x- this->x) == 0) && ((y - this->y) == 2) && firstMove){ // possible first movement
+			firstMove = false;
+			return true;
 		}
 	}else if (!isWhite()){
-		if ((abs(x- this->x)<=1) && ((y - this->y) == -1)){
+		if ((abs(x- this->x)<=1) && ((y - this->y) == -1)){ // attack movement o normal (black)
 			return true;
-		}else{
-			return false;
 		}
-	}
-	return false;
+		else if (((x- this->x) == 0) && ((y - this->y) == -2) && firstMove){ // possible first movement
+			firstMove = false;
+			return true;
+		}
+	}return false;
 }
 
 
@@ -44,6 +47,6 @@ void Pawn::move (unsigned short x, unsigned short y){
 void Pawn::moveFirst (unsigned short n){
 	if (n==2) x = x + 2;
 	else move (x, y);
-	firstMove = false;
+
 }
 
