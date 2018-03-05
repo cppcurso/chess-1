@@ -11,7 +11,8 @@
 
 Pawn::Pawn(bool white, unsigned short x, unsigned short y) {
 	this->white = white;
-	figure = 'P';
+	if (white) figure = "Pw";
+	else figure = "Pb";
 	firstMove = true;
 	this->x = x;
 	this->y = y;

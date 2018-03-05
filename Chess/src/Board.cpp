@@ -22,11 +22,17 @@ Board& Board:: getInstance(){
 	return instance;
 }
 
+bool Board::getCheckMate(){
+	return checkMate;
+}
+
 Board::Board(){
 	length = (sizeof(board[8])/sizeof(int));
+	checkMate = false;
 }
 
 void Board::init(){
+
 	for (size_t i=2; i<7; i++){
 		for (size_t j = 0; j < length; j++){
 			board[i][j].piece = NULL;
@@ -62,7 +68,7 @@ void Board::print(){
 	for (size_t i=0; i< 8; i++){
         for (size_t j = 0; j < 8; j++) {
         	if (board[j][i].piece == NULL ) {
-				cout << "0" << "  ";
+				cout << "0" << "   ";
 			} else {
 				cout<<board[j][i].piece->getFigure()<<"  ";
 			}
@@ -134,6 +140,7 @@ void Board::move(Cell c, unsigned short x, unsigned short y){
 	unsigned short x0 = c.piece->getX();
 	unsigned short y0 = c.piece->getY();
 	if (valid(x,y,c) && c.piece->validMove(x,y)){
+		checkMate = isCheckMate(x, y);
 		c.piece->move(x,y);
 		board[x][y].piece = c.piece;
 		board[x0][y0].piece = NULL;
@@ -142,9 +149,9 @@ void Board::move(Cell c, unsigned short x, unsigned short y){
 
 bool Board::isCheckMate(unsigned short x, unsigned short y){
 	if(board[x][y].piece != NULL){
-		if(board[x][y].piece->getFigure()[0] == 'K')
+		if(board[x][y].piece->getFigure()[0] == 'K'){
 			cout<<"JAQUE MATE!!!!! \n";
 			return true;
-	} else return false;
-
+		} else return false;
+	} return false;
 }

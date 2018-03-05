@@ -13,11 +13,13 @@
 
 class Board {
 	unsigned int length;
+	bool checkMate;
 	static const short dimension = 8;
 	Board();
 public:
 	Cell board[dimension][dimension];
 	static Board& getInstance();
+	bool getCheckMate();
 	void init();
 	void print();
 	bool validBishop(unsigned short x, unsigned short y, unsigned short x0, unsigned short y0);
