@@ -116,9 +116,9 @@ bool Board::valid (unsigned short x, unsigned short y, Cell c){ // Cell c repres
 			case 'R':
 				return validRook(x,y,x0,y0);
 			case 'Q':
-				if (x0 == x || y0 == y)
+				if (x0 == x || y0 == y) // queen moves horizontal (like a rook)
 					return validRook(x,y,x0,y0);
-				else
+				else				// queen moves vertical (like a bishop)
 					return validBishop(x,y,x0,y0);
 			case 'P':
 				return validPawn(x,y,x0,y0);
@@ -143,7 +143,7 @@ void Board::move(Cell c, unsigned short x, unsigned short y){
 
 void Board::isCheckMate(Cell c, unsigned short x, unsigned short y){
 	if(board[x][y].piece != NULL){
-		if(board[x][y].piece->getFigure() == 'K')
+		if(board[x][y].piece->getFigure()[0] == 'K')
 			cout<<"JAQUE MATE!!!!! \n";
 	}
 
