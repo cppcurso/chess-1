@@ -18,7 +18,7 @@ string Piece::getColour(){
 
 string Piece::getName(){
 	string name;
-	switch (getFigure()) {
+	switch (getFigure()[0]) {
 				case 'P':
 					name = "Paw";
 					break;
