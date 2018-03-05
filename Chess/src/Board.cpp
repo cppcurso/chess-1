@@ -70,92 +70,78 @@ void Board::print(){
     } cout<<endl;
 }
 
+bool Board::validBishop(unsigned short x, unsigned short y, unsigned short x0, unsigned short y0){
+	while ((x0-x) != 0 && (y0-y) != 0){
+		x0++;
+		y0++;
+		if (!board[x0][y0].isEmpty())
+			return false;
+	}return true;
+}
+
+bool Board::validRook(unsigned short x, unsigned short y, unsigned short x0, unsigned short y0){
+	if (x0 == x){
+		for (unsigned short i =(y0+1); i<y; i++){
+			if (!board[x0][i].isEmpty()){
+				return false;
+			}
+		} return true;
+	}
+	else if (y0==y){
+		for (unsigned short i =(x0+1); i<x; i++){
+			if (!board[i][y0].isEmpty())
+				return false;
+		}return true;
+	}else return false;
+}
+
+
 
 bool Board::valid (unsigned short x, unsigned short y, Cell c){ // Cell c es la celda inicial
 	if (x<8 && y<8){ // no se sale del tablero
 		if (board[x][y].isEmpty() || (board[x][y].piece->isWhite()!= c.piece->isWhite())){// está vacía o hay una del otro color
 			unsigned short x0 = c.piece->getX();
 			unsigned short y0 = c.piece->getY();
-			switch (board[x0][y0].piece->getFigure()){
+			switch (board[x0][y0].piece->getFigure()[0]){
 			case 'B':
-				while ((x0-x) != 0 && (y0-y) != 0){
-					x0++;
-					y0++;
-					if (!board[x0][y0].isEmpty())
-						return false;
-				}return true;
+				return validBishop(x,y,x0,y0);
 			case 'R':
-				if (x0 == x){
-					for (unsigned short i =(y0+1); i<y; i++){
-						if (!board[x0][i].isEmpty()){
-							return false;
-						}
-					} return true;
-				}
-				else if (y0==y){
-					for (unsigned short i =(x0+1); i<x; i++){
-						if (!board[i][y0].isEmpty())
-							return false;
-					}return true;
-				}return false;
+				return validRook(x,y,x0,y0);
 			case 'Q':
-				if (x0 == x){
-					for (unsigned short i =(y0+1); i<y; i++){
-						if (!board[x0][i].isEmpty())
-							return false;
-					} return true;
-				}
-				else if (y0==y){
-					for (unsigned short i =(x0+1); i<x; i++){
-						if (!board[i][y0].isEmpty())
-							return false;
-					}return true;
-				}
-				else {
-					while ((x0-x) != 0 && (y0-y) != 0){
-						x0++;
-						y0++;
-						if (!board[x0][y0].isEmpty())
-							return false;
-					}return true;
-				}
-			case 'P':
-				if ((x0 != x && y0 != y) && !board[x][y].isEmpty())
-					return true;
-				else if(x0 == x)
-					return true;
+				if (x0 == x || y0 == y)
+					return validRook(x,y,x0,y0);
 				else
-					return false;
-			default:
+					return validBishop(x,y,x0,y0);
+//			case 'P':
+//				if ((x0 != x && y0 != y) && !board[x][y].isEmpty())
+//					return true;
+//				else if(x0 == x)
+//					return true;
+//				else
+//					return false;
+			default:     // Pawn, knight and king
 				return true;
 			}
-			return true;
 		}else return false;
 	}else return false;
 }
+
 
 void Board::move(Cell c, unsigned short x, unsigned short y){
 	unsigned short x0 = c.piece->getX();
 	unsigned short y0 = c.piece->getY();
 	if (valid(x,y,c) && c.piece->validMove(x,y)){
+		isCheckMate(c, x, y);
 		c.piece->move(x,y);
 		board[x][y].piece = c.piece;
 		board[x0][y0].piece = NULL;
 	}
 }
 
+void Board::isCheckMate(Cell c, unsigned short x, unsigned short y){
+	if(board[x][y].piece != NULL){
+		if(board[x][y].piece->getFigure() == 'K')
+			cout<<"JAQUE MATE!!!!! \n";
+	}
 
-//void Pawn::attack(Board b){
-//	y = y+1;
-//	unsigned short x1 = x+1;
-//	unsigned short x2 = x-1;
-//	if (!b.board[x1][y].isEmpty() && b.board[x2][y].isEmpty()){
-//		if ((b.board[x1][y].piece->isWhite() != !white){
-//		b.board[x1][y] = NULL;
-//		x = x1;
-//		}
-//	}else if (!b.board[x2][y].isEmpty()){
-//		b.board[x2][y] = NULL;
-//		x = x2;
-//	}
-//}
+}
