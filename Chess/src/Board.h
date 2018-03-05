@@ -22,6 +22,7 @@ public:
 	void print();
 	bool valid(unsigned short x, unsigned short y, Cell c);
 	void move(Cell c, unsigned short x, unsigned short y);
+	void isCheckMate(Cell c, unsigned short x, unsigned short y);
 	//void attack(Board b);
 };
 
