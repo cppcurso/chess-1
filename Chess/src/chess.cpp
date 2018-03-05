@@ -43,18 +43,21 @@ void Chess::turn() {
 			cout << "Pieza a mover: ";
 			cin >> piecePosX;
 			cin >> piecePosY;
-			if (Board::getInstance().board[piecePosX][piecePosY].content()->isWhite()) {
-				cout << "Posición a la que mueves: ";
-				cin >> x;
-				cin >> y;
-				Board::getInstance().move(
-						Board::getInstance().board[piecePosX][piecePosY], x,
-						y);
-				badPieceSelection = false;
-				turnNumber++;
-			} else {
-				badPieceSelection = true;
-				cout << "Esa pieza no es tuya mueve otra \n";
+			if (Board::getInstance().board[piecePosX][piecePosY].content() != NULL){
+				if (Board::getInstance().board[piecePosX][piecePosY].content()->isWhite()){
+					cout << "mueves el: "<<Board::getInstance().board[piecePosX][piecePosY].content()->getFigure()<< '\n';
+					cout << "Posición a la que mueves: ";
+					cin >> x;
+					cin >> y;
+					Board::getInstance().move(
+							Board::getInstance().board[piecePosX][piecePosY], x, y);
+					badPieceSelection = false;
+					turnNumber++;
+					Board::getInstance().print();
+				} else {
+					badPieceSelection = true;
+					cout << "Esa pieza no es tuya mueve otra \n";
+				}
 			}
 		} while (badPieceSelection);
 
@@ -65,17 +68,21 @@ void Chess::turn() {
 			cout << "Pieza a mover: ";
 			cin >> piecePosX;
 			cin >> piecePosY;
-			if (!Board::getInstance().board[piecePosX][piecePosY].content()->isWhite()) {
-				cout << "Posición a la que mueves: ";
-				cin >> x;
-				cin >> y;
-				Board::getInstance().move(
-						Board::getInstance().board[piecePosX][piecePosY], x,
-						y);
-				badPieceSelection = false;
-				turnNumber++;
-			} else
-				cout << "Esa pieza no es tuya mueve otra \n";
+			if (Board::getInstance().board[piecePosX][piecePosY].content() != NULL){
+				if (!Board::getInstance().board[piecePosX][piecePosY].content()->isWhite()) {
+					cout << "mueves el: "<<Board::getInstance().board[piecePosX][piecePosY].content()->getFigure()<< '\n';
+					cout << "Posición a la que mueves: ";
+					cin >> x;
+					cin >> y;
+					Board::getInstance().move(
+							Board::getInstance().board[piecePosX][piecePosY], x,
+							y);
+					badPieceSelection = false;
+					turnNumber++;
+					Board::getInstance().print();
+				} else
+					cout << "Esa pieza no es tuya mueve otra \n";
+			}
 		} while (badPieceSelection);
 	}
 }

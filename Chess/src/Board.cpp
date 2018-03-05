@@ -62,7 +62,7 @@ void Board::print(){
 	for (size_t i=0; i< 8; i++){
         for (size_t j = 0; j < 8; j++) {
         	if (board[j][i].piece == NULL ) {
-				cout << "0" << "  ";
+				cout << "0" << "   ";
 			} else {
 				cout<<board[j][i].piece->getFigure()<<"  ";
 			}
@@ -139,9 +139,9 @@ void Board::move(Cell c, unsigned short x, unsigned short y){
 
 bool Board::isCheckMate(unsigned short x, unsigned short y){
 	if(board[x][y].piece != NULL){
-		if(board[x][y].piece->getFigure()[0] == 'K')
+		if(board[x][y].piece->getFigure()[0] == 'K'){
 			cout<<"JAQUE MATE!!!!! \n";
 			return true;
-	} else return false;
-
+		} else return false;
+	} return false;
 }
