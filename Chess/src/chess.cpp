@@ -43,7 +43,11 @@ void Chess::turn() {
 			cout << "Pieza a mover: ";
 			cin >> piecePosX;
 			cin >> piecePosY;
-			if (Board::getInstance().board[piecePosX][piecePosY].content()->isWhite()) {
+			if ((piecePosX != x && piecePosY != y)){
+				badPieceSelection = true;
+				cout << "No has movido la pieza, introduce otra posición \n";
+			}
+			else if (Board::getInstance().board[piecePosX][piecePosY].content()->isWhite()) {
 				cout << "Posición a la que mueves: ";
 				cin >> x;
 				cin >> y;

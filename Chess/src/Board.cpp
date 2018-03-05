@@ -98,7 +98,7 @@ bool Board::validRook(unsigned short x, unsigned short y, unsigned short x0, uns
 bool Board::validPawn(unsigned short x, unsigned short y, unsigned short x0, unsigned short y0){
 	if ((x0 != x && y0 != y) && !board[x][y].isEmpty()) // attack movement
 		return true;
-	else if((x0 == x) && board[x0+1][y0+1].isEmpty() && board[x][y].isEmpty()) // normal movement
+	else if((x0 == x) && board[x0][y0+1].isEmpty() && board[x][y].isEmpty()) // normal movement
 		return true;
 	else
 		return false;
