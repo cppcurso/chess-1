@@ -102,10 +102,15 @@ bool Board::validRook(unsigned short x, unsigned short y, unsigned short x0, uns
 }
 
 bool Board::validPawn(unsigned short x, unsigned short y, unsigned short x0, unsigned short y0){
-	if ((x0 != x && y0 != y) && !board[x][y].isEmpty()) // attack movement
+	if (x != x0  && !board[x][y].isEmpty() && board[x0][y0].piece->isWhite() != board[x][y].piece->isWhite()) // attack
 		return true;
-	else if((x0 == x) && board[x0][y0+1].isEmpty() && board[x][y].isEmpty()) // normal movement
-		return true;
+	else if(x0 == x){
+		for (unsigned short i =(y0+1); i<y; i++){
+			if (!board[x0][i].isEmpty()){
+				return false;
+			}
+		}return true;
+	}
 	else
 		return false;
 }
