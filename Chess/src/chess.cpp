@@ -39,18 +39,15 @@ public:
     int turnNumber;
     Chess() : Game(2) {}
     void start() {
-        std::cout << "Colocando las piezas..." << '\n';
+        cout << "Colocando las piezas..." << '\n';
         Board::getInstance();
         Board::getInstance().init();
     	Board::getInstance().print();
         checkMate = false;
         turnNumber = 0;
-        x = 20;
-        y = 20;
     }
     bool end() {
-        std::cout << "Comprobando jaque mate..." << '\n';
-        if(Board::isCheckMate(Board::getInstance().board[piecePosX][piecePosY], x, y)){
+        if(Board::getInstance().isCheckMate(Board::getInstance().board[piecePosX][piecePosY],x,y)){
         	checkMate = true;
         }
         return checkMate;
@@ -58,7 +55,7 @@ public:
     void turn() {
         if (turnNumber % 2 == 0) {
             badPieceSelection = true;
-        	std::cout << "Mueve jugador 1" << '\n';
+        	cout << "Mueve jugador 1" << '\n';
         	do {
         		cout << "Pieza a mover: ";
         		cin >> piecePosX;
@@ -74,7 +71,7 @@ public:
         	} while(badPieceSelection);
 
         } else {
-        	std::cout << "Mueve jugador 2" << '\n';
+        	cout << "Mueve jugador 2" << '\n';
         	badPieceSelection = true;
         	do {
         		cout << "Pieza a mover: ";
@@ -99,9 +96,12 @@ public:
 };
 
 int main() {
-	Board::getInstance();
-	Board::getInstance().init();
-	Board::getInstance().print();
+	Chess chessGame;
+	cout << "Partida 1" << '\n';
+	chessGame.play();
+//	Board::getInstance();
+//	Board::getInstance().init();
+//	Board::getInstance().print();
 //	Board::getInstance().move(Board::getInstance().board[3][1],3,2);
 //	Board::getInstance().print();
 //	Board::getInstance().move(Board::getInstance().board[0][0],0,4);

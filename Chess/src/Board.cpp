@@ -141,10 +141,11 @@ void Board::move(Cell c, unsigned short x, unsigned short y){
 	}
 }
 
-void Board::isCheckMate(Cell c, unsigned short x, unsigned short y){
+bool Board::isCheckMate(Cell c, unsigned short x, unsigned short y){
 	if(board[x][y].piece != NULL){
 		if(board[x][y].piece->getFigure()[0] == 'K')
 			cout<<"JAQUE MATE!!!!! \n";
-	}
+			return true;
+	} else return false;
 
 }
