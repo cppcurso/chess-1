@@ -18,7 +18,6 @@ public:
 		unsigned short piecePosY;
 		unsigned short x;
 		unsigned short y;
-		bool badPieceSelection;
 		bool checkMate;
 		int turnNumber;
 		void start();
