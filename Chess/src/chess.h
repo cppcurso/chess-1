@@ -26,6 +26,8 @@ public:
 		void turn();
 		void finish();
 		Chess();
+		~Chess(){}
+
 };
 
 } /* namespace std */
