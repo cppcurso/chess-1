@@ -30,7 +30,7 @@ void Chess::start() {
 }
 
 bool Chess::end() {
-	if (Board::getInstance().isCheckMate(x, y)) {
+	if (Board::getInstance().getCheckMate()) {
 		checkMate = true;
 	}
 	return checkMate;
@@ -43,8 +43,8 @@ void Chess::turn() {
 			cout << "Pieza a mover: ";
 			cin >> piecePosX;
 			cin >> piecePosY;
-			if (Board::getInstance().board[piecePosX][piecePosY].content() != NULL){
-				if (Board::getInstance().board[piecePosX][piecePosY].content()->isWhite()){
+
+				if (Board::getInstance().board[piecePosX][piecePosY].content() != NULL && Board::getInstance().board[piecePosX][piecePosY].content()->isWhite()){
 					cout << "mueves el: "<<Board::getInstance().board[piecePosX][piecePosY].content()->getFigure()<< '\n';
 					cout << "Posición a la que mueves: ";
 					cin >> x;
@@ -57,7 +57,7 @@ void Chess::turn() {
 				} else {
 					badPieceSelection = true;
 					cout << "Esa pieza no es tuya mueve otra \n";
-				}
+
 			}
 		} while (badPieceSelection);
 
@@ -68,8 +68,8 @@ void Chess::turn() {
 			cout << "Pieza a mover: ";
 			cin >> piecePosX;
 			cin >> piecePosY;
-			if (Board::getInstance().board[piecePosX][piecePosY].content() != NULL){
-				if (!Board::getInstance().board[piecePosX][piecePosY].content()->isWhite()) {
+
+				if (Board::getInstance().board[piecePosX][piecePosY].content() != NULL && !Board::getInstance().board[piecePosX][piecePosY].content()->isWhite()) {
 					cout << "mueves el: "<<Board::getInstance().board[piecePosX][piecePosY].content()->getFigure()<< '\n';
 					cout << "Posición a la que mueves: ";
 					cin >> x;
@@ -80,9 +80,10 @@ void Chess::turn() {
 					badPieceSelection = false;
 					turnNumber++;
 					Board::getInstance().print();
-				} else
+				} else{
+					badPieceSelection = true;
 					cout << "Esa pieza no es tuya mueve otra \n";
-			}
+				}
 		} while (badPieceSelection);
 	}
 }

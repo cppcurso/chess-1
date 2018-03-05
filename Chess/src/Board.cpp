@@ -22,11 +22,17 @@ Board& Board:: getInstance(){
 	return instance;
 }
 
+bool Board::getCheckMate(){
+	return checkMate;
+}
+
 Board::Board(){
 	length = (sizeof(board[8])/sizeof(int));
+	checkMate = false;
 }
 
 void Board::init(){
+
 	for (size_t i=2; i<7; i++){
 		for (size_t j = 0; j < length; j++){
 			board[i][j].piece = NULL;
@@ -134,6 +140,7 @@ void Board::move(Cell c, unsigned short x, unsigned short y){
 	unsigned short x0 = c.piece->getX();
 	unsigned short y0 = c.piece->getY();
 	if (valid(x,y,c) && c.piece->validMove(x,y)){
+		checkMate = isCheckMate(x, y);
 		c.piece->move(x,y);
 		board[x][y].piece = c.piece;
 		board[x0][y0].piece = NULL;
