@@ -95,11 +95,19 @@ bool Board::validRook(unsigned short x, unsigned short y, unsigned short x0, uns
 	}else return false;
 }
 
+bool Board::validPawn(unsigned short x, unsigned short y, unsigned short x0, unsigned short y0){
+	if ((x0 != x && y0 != y) && !board[x][y].isEmpty()) // attack movement
+		return true;
+	else if(x0 == x && board[x][y].isEmpty()) // normal movement
+		return true;
+	else
+		return false;
+}
 
-
-bool Board::valid (unsigned short x, unsigned short y, Cell c){ // Cell c es la celda inicial
+bool Board::valid (unsigned short x, unsigned short y, Cell c){ // Cell c represents the piece
 	if (x<8 && y<8){ // no se sale del tablero
-		if (board[x][y].isEmpty() || (board[x][y].piece->isWhite()!= c.piece->isWhite())){// está vacía o hay una del otro color
+		if (board[x][y].isEmpty() || (board[x][y].piece->isWhite()!= c.piece->isWhite())){
+			// if cell is empty, or there is a piece of another colour (than the piece you want to move)
 			unsigned short x0 = c.piece->getX();
 			unsigned short y0 = c.piece->getY();
 			switch (board[x0][y0].piece->getFigure()[0]){
@@ -112,14 +120,9 @@ bool Board::valid (unsigned short x, unsigned short y, Cell c){ // Cell c es la 
 					return validRook(x,y,x0,y0);
 				else
 					return validBishop(x,y,x0,y0);
-//			case 'P':
-//				if ((x0 != x && y0 != y) && !board[x][y].isEmpty())
-//					return true;
-//				else if(x0 == x)
-//					return true;
-//				else
-//					return false;
-			default:     // Pawn, knight and king
+			case 'P':
+				return validPawn(x,y,x0,y0);
+			default:     // knight and king
 				return true;
 			}
 		}else return false;
