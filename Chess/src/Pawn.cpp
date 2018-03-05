@@ -10,11 +10,12 @@
 #include <stdlib.h>
 
 Pawn::Pawn(bool white, unsigned short x, unsigned short y) {
-	this->white = white;
-	figure = 'P';
 	firstMove = true;
 	this->x = x;
 	this->y = y;
+	this->white = white;
+	if (white) figure = "Pw";
+	else figure = "Pb";
 }
 
 bool Pawn::validMove (unsigned short x, unsigned short y){
@@ -46,5 +47,18 @@ void Pawn::moveFirst (unsigned short n){
 	firstMove = false;
 }
 
-
+//void Pawn::attack(Board b){
+//	y = y+1;
+//	unsigned short x1 = x+1;
+//	unsigned short x2 = x-1;
+//	if (!b.board[x1][y].isEmpty() && b.board[x2][y].isEmpty()){
+//		if ((b.board[x1][y].piece->isWhite() != !white){
+//		b.board[x1][y] = NULL;
+//		x = x1;
+//		}
+//	}else if (!b.board[x2][y].isEmpty()){
+//		b.board[x2][y] = NULL;
+//		x = x2;
+//	}
+//}
 

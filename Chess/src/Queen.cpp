@@ -21,8 +21,9 @@ void Queen::move(unsigned short x, unsigned short y){
 }
 
 Queen::Queen(bool white, unsigned short x, unsigned short y) {
-	this -> white = white;
-	this -> figure = 'Q';
 	this -> x = x;
 	this -> y = y;
+	this->white = white;
+	if (white) figure = "Qw";
+	else figure = "Qb";
 }

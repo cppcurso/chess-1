@@ -22,8 +22,9 @@ void King::move(unsigned short x, unsigned short y){
 }
 
 King::King(bool white, unsigned short x, unsigned short y) {
-	this -> white = white;
-	this -> figure = 'K';
+	this->white = white;
+	if (white) figure = "Kw";
+	else figure = "Kb";
 	this -> x = x;
 	this -> y = y;
 }

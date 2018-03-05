@@ -16,7 +16,7 @@ class Piece {
 protected:
 	int x,y;
 	bool white;
-	char figure;
+	string figure;
 
 public:
 	virtual bool validMove (unsigned short x,unsigned short y) = 0;
@@ -26,7 +26,7 @@ public:
 
 //	bool validMove (int x,int y);
 
-	char getFigure() const {
+	string getFigure() const {
 		return figure;
 	}
 

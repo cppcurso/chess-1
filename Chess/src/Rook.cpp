@@ -9,8 +9,11 @@
 #include "Piece.h"
 
 Rook::Rook(bool white, unsigned short x, unsigned short y) {
+	this -> x = x;
+	this -> y = y;
 	this->white = white;
-	figure = 'R';
+	if (white) figure = "Tw";
+	else figure = "Tb";
 }
 
 void Rook::move(unsigned short x, unsigned short y){
