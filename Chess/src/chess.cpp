@@ -25,20 +25,15 @@ void Chess::getNewPosition(){
 	while(!movedPiece);
 }
 void Chess::moveSelectedPiece(bool& badPieceSelection){
-
 			cout << "mueves el: "<<Board::getInstance().board[piecePosX][piecePosY].content()->getFigure()<< '\n';
 			getNewPosition();
 			Board::getInstance().move(Board::getInstance().board[piecePosX][piecePosY], x, y);
 			badPieceSelection = false;
 			turnNumber++;
 			Board::getInstance().print();
-
-
-
 }
 
 Chess::Chess() : Game (2){
-
 	piecePosX = 0;
 	piecePosY = 0;
 	x = 0;
@@ -65,40 +60,26 @@ void Chess::turn() {
 	bool badPieceSelection = true;
 	if (turnNumber % 2 == 0) {
 		cout << "Mueve jugador 1" << '\n';
-		do {
-			cout << "Pieza a mover: ";
-			cin >> piecePosX;
-			cin >> piecePosY;
-			if (Board::getInstance().board[piecePosX][piecePosY].content() != NULL
-					&& Board::getInstance().board[piecePosX][piecePosY].content()->isWhite()){ // looks player 1 move a white piece
-
-				moveSelectedPiece(badPieceSelection);
-			}else {
-				badPieceSelection = true;
-				cout << "Esa pieza no es tuya mueve otra \n";
-			}
-		}while (badPieceSelection);
-
-
-
-	} else {
-		cout << "Mueve jugador 2" << '\n';
-		do {
-			cout << "Pieza a mover: ";
-			cin >> piecePosX;
-			cin >> piecePosY;
-			if (Board::getInstance().board[piecePosX][piecePosY].content() != NULL
-					&& !Board::getInstance().board[piecePosX][piecePosY].content()->isWhite()){ // looks player 1 move a white piece
-
-				moveSelectedPiece(badPieceSelection);
-			}else {
-				badPieceSelection = true;
-				cout << "Esa pieza no es tuya mueve otra \n";
-			}
-		}while (badPieceSelection);
-
+		player = true;
 	}
+	else{
+		cout << "Mueve jugador 2" << '\n';
+		player = false;
+	}
+	do {
+		cout << "Pieza a mover: ";
+		cin >> piecePosX;
+		cin >> piecePosY;
+		if (Board::getInstance().board[piecePosX][piecePosY].content() != NULL
+				&& Board::getInstance().board[piecePosX][piecePosY].content()->isWhite() == player){ // looks player 1 move a white piece
+			moveSelectedPiece(badPieceSelection);
+		}else {
+			badPieceSelection = true;
+			cout << "Esa pieza no es tuya mueve otra \n";
+		}
+	}while (badPieceSelection);
 }
+
 
 void Chess::finish() {
 	if (turnNumber % 2 == 0)
