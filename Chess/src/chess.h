@@ -19,7 +19,6 @@ class Chess : public Game{
 		unsigned short x;
 		unsigned short y;
 		bool checkMate;
-		bool player;
 		int turnNumber;
 		void getNewPosition();
 		void moveSelectedPiece(bool& badPieceSelection);
