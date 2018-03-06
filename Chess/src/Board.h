@@ -25,8 +25,8 @@ public:
 	bool validBishop(unsigned short x, unsigned short y, unsigned short x0, unsigned short y0);
 	bool validRook(unsigned short x, unsigned short y, unsigned short x0, unsigned short y0);
 	bool validPawn(unsigned short x, unsigned short y, unsigned short x0, unsigned short y0);
-	bool valid(unsigned short x, unsigned short y, Cell c);
-	void move(Cell c, unsigned short x, unsigned short y);
+	bool valid(unsigned short x, unsigned short y, unsigned short x0, unsigned short y0);
+	void move(unsigned short x0, unsigned short y0, unsigned short x, unsigned short y);
 	bool isCheckMate(unsigned short x, unsigned short y);
 	//void attack(Board b);
 };
