@@ -15,6 +15,7 @@ CPP_SRCS += \
 ../Chess/src/PawnMoveTest.cpp \
 ../Chess/src/Piece.cpp \
 ../Chess/src/Queen.cpp \
+../Chess/src/QueenMoveTest.cpp \
 ../Chess/src/Rook.cpp \
 ../Chess/src/RookMove1.cpp \
 ../Chess/src/chess.cpp \
@@ -32,6 +33,7 @@ OBJS += \
 ./Chess/src/PawnMoveTest.o \
 ./Chess/src/Piece.o \
 ./Chess/src/Queen.o \
+./Chess/src/QueenMoveTest.o \
 ./Chess/src/Rook.o \
 ./Chess/src/RookMove1.o \
 ./Chess/src/chess.o \
@@ -49,6 +51,7 @@ CPP_DEPS += \
 ./Chess/src/PawnMoveTest.d \
 ./Chess/src/Piece.d \
 ./Chess/src/Queen.d \
+./Chess/src/QueenMoveTest.d \
 ./Chess/src/Rook.d \
 ./Chess/src/RookMove1.d \
 ./Chess/src/chess.d \
