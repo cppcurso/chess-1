@@ -20,6 +20,8 @@ public:
 		unsigned short y;
 		bool checkMate;
 		int turnNumber;
+		void getNewPosition();
+		void moveSelectedPiece(bool& badPieceSelection);
 		void start();
 		bool end();
 		void turn();

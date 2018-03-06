@@ -11,6 +11,32 @@
 using namespace std;
 
 
+void Chess::getNewPosition(){
+	bool movedPiece = false;
+	do{
+		cout << "Posición a la que mueves: ";
+		cin >> x;
+		cin >> y;
+
+		if (piecePosX == x && piecePosY == y){
+			cout << "No has movido la pieza, introduce otra posición \n";
+		}else movedPiece = true;
+	}
+	while(!movedPiece);
+}
+void Chess::moveSelectedPiece(bool& badPieceSelection){
+
+			cout << "mueves el: "<<Board::getInstance().board[piecePosX][piecePosY].content()->getFigure()<< '\n';
+			getNewPosition();
+			Board::getInstance().move(Board::getInstance().board[piecePosX][piecePosY], x, y);
+			badPieceSelection = false;
+			turnNumber++;
+			Board::getInstance().print();
+
+		}
+	}
+}
+
 Chess::Chess() : Game (2){
 
 	piecePosX = 0;
@@ -39,36 +65,21 @@ void Chess::turn() {
 	bool badPieceSelection = true;
 	if (turnNumber % 2 == 0) {
 		cout << "Mueve jugador 1" << '\n';
-
 		do {
 			cout << "Pieza a mover: ";
 			cin >> piecePosX;
 			cin >> piecePosY;
-
 			if (Board::getInstance().board[piecePosX][piecePosY].content() != NULL
-					&& Board::getInstance().board[piecePosX][piecePosY].content()->isWhite()){ // looks player 1 move a white piece
-				cout << "mueves el: "<<Board::getInstance().board[piecePosX][piecePosY].content()->getFigure()<< '\n';
-				bool movedPiece = false;
-				do{
-					cout << "Posición a la que mueves: ";
-					cin >> x;
-					cin >> y;
+					&& !Board::getInstance().board[piecePosX][piecePosY].content()->isWhite()){ // looks player 1 move a white piece
 
-					if (piecePosX == x && piecePosY == y){
-						cout << "No has movido la pieza, introduce otra posición \n";
-					}else movedPiece = true
-				}
-				while(!movedPiece);
-				Board::getInstance().move(Board::getInstance().board[piecePosX][piecePosY], x, y);
-				badPieceSelection = false;
-				turnNumber++;
-				Board::getInstance().print();
-			} else {
+				moveSelectedPiece(badPieceSelection);
+			}else {
 				badPieceSelection = true;
 				cout << "Esa pieza no es tuya mueve otra \n";
-
 			}
-		} while (badPieceSelection);
+		}while (badPieceSelection);
+
+
 
 	} else {
 		cout << "Mueve jugador 2" << '\n';
@@ -76,31 +87,16 @@ void Chess::turn() {
 			cout << "Pieza a mover: ";
 			cin >> piecePosX;
 			cin >> piecePosY;
-
 			if (Board::getInstance().board[piecePosX][piecePosY].content() != NULL
 					&& !Board::getInstance().board[piecePosX][piecePosY].content()->isWhite()){ // looks player 1 move a white piece
-				cout << "mueves el: "<<Board::getInstance().board[piecePosX][piecePosY].content()->getFigure()<< '\n';
-				bool movedPiece = false;
-				do{
-					cout << "Posición a la que mueves: ";
-					cin >> x;
-					cin >> y;
 
-					if (piecePosX == x && piecePosY == y){
-						cout << "No has movido la pieza, introduce otra posición \n";
-					}else movedPiece = true
-				}
-				while(!movedPiece);
-				Board::getInstance().move(Board::getInstance().board[piecePosX][piecePosY], x, y);
-				badPieceSelection = false;
-				turnNumber++;
-				Board::getInstance().print();
-			} else {
+				moveSelectedPiece(badPieceSelection);
+			}else {
 				badPieceSelection = true;
 				cout << "Esa pieza no es tuya mueve otra \n";
-
 			}
-		} while (badPieceSelection);
+		}while (badPieceSelection);
+
 	}
 }
 
