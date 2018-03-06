@@ -13,12 +13,13 @@
 namespace std {
 
 class Chess : public Game{
-public:
-	unsigned short piecePosX;
+	public:
+		unsigned short piecePosX;
 		unsigned short piecePosY;
 		unsigned short x;
 		unsigned short y;
 		bool checkMate;
+		bool player;
 		int turnNumber;
 		void getNewPosition();
 		void moveSelectedPiece(bool& badPieceSelection);
@@ -29,8 +30,8 @@ public:
 		Chess();
 		~Chess(){}
 
-};
+	};
 
-} /* namespace std */
+	} /* namespace std */
 
-#endif /* CHESS_H_ */
+	#endif /* CHESS_H_ */
