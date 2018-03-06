@@ -35,15 +35,15 @@ void Board::init(){
 
 	for (size_t i=2; i<7; i++){
 		for (size_t j = 0; j < length; j++){
-			board[i][j].cell = NULL;
+			board[i][j].piece = NULL;
 		}
 	}
-	for (unsigned int i =0; i < 8 ; i++) {
-		board[i][1] = Cell(new Pawn(true,1,i));
+	for (unsigned int i =0; i < length ; i++) {
+		board[i][1] = Cell(new Pawn(true,i,1));
 	}
 
-	for (unsigned int i =0; i < 8 ; i++) {
-			board[i][6] = Cell(new Pawn(false,6,i));
+	for (unsigned int i =0; i < length ; i++) {
+			board[i][6] = Cell(new Pawn(false,i,6));
 		}
 
 	board[1][0] = Cell(new Knight(true, 1, 0));
@@ -67,28 +67,11 @@ void Board::init(){
 void Board::print(){
 	for (size_t i=0; i< 8; i++){
         for (size_t j = 0; j < 8; j++) {
-<<<<<<< HEAD
-        	if (board[j][i].cell == NULL ) {
-				cout << "0" << "  ";
-=======
         	if (board[j][i].piece == NULL ) {
 				cout << "0" << "   ";
->>>>>>> 4812d69d404dd9ff0fda77ef82a0aaac05e109c0
 			} else {
-				cout<<board[j][i].cell->getFigure()<<"  ";
+				cout<<board[j][i].piece->getFigure()<<"  ";
 			}
-<<<<<<< HEAD
-        }
-    }
-}
-
-bool Board::valid (unsigned short x, unsigned short y, Cell c){
-	if (x<8 && y<8){ // no se sale del tablero
-		if (board[x][y].isEmpty() || (board[x][y].cell->isWhite()!= c.cell->isWhite())){// está vacía o hay una del otro color
-			unsigned short x0 = board[x][y].cell->getX();
-			unsigned short y0 = board[x][y].cell->getY();
-			switch (board[x][y].cell->getFigure()){
-=======
         }cout << endl;
     } cout<<endl;
 }
@@ -132,56 +115,16 @@ bool Board::validPawn(unsigned short x, unsigned short y, unsigned short x0, uns
 		return false;
 }
 
-bool Board::valid (unsigned short x, unsigned short y, unsigned short x0, unsigned short y0){ // Cell c represents the piece
+bool Board::valid (unsigned short x, unsigned short y, Cell c){ // Cell c represents the piece
 	if (x<8 && y<8){ // no se sale del tablero
-		if (board[x][y].isEmpty() || (board[x][y].piece->isWhite()!= board[x0][y0].piece->isWhite())){
+		if (board[x][y].isEmpty() || (board[x][y].piece->isWhite()!= c.piece->isWhite())){
 			// if cell is empty, or there is a piece of another colour (than the piece you want to move)
-
+			unsigned short x0 = c.piece->getX();
+			unsigned short y0 = c.piece->getY();
 			switch (board[x0][y0].piece->getFigure()[0]){
->>>>>>> 4812d69d404dd9ff0fda77ef82a0aaac05e109c0
 			case 'B':
 				return validBishop(x,y,x0,y0);
 			case 'R':
-<<<<<<< HEAD
-				if (x0 == x){
-					for (unsigned short i =(y0+1); i<y; i++){
-						if (!board[x0][i].isEmpty())
-							return false;
-					} return true;
-				}
-				else if (y0==y){
-					for (unsigned short i =(x0+1); i<x; i++){
-						if (!board[i][y0].isEmpty())
-							return false;
-					}return true;
-				}return false;
-			case 'Q':
-				if (x0 == x){
-					for (unsigned short i =(y0+1); i<y; i++){
-						if (!board[x0][i].isEmpty())
-							return false;
-					} return true;
-				}
-				else if (y0==y){
-					for (unsigned short i =(x0+1); i<x; i++){
-						if (!board[i][y0].isEmpty())
-							return false;
-					}return true;
-				}
-				else {
-					while ((x0-x) != 0 && (y0-y) != 0){
-						x0++;
-						y0++;
-						if (!board[x0][y0].isEmpty())
-							return false;
-					}return true;
-				}
-			default:
-				return true;
-			}
-		}return false;
-	}return false;
-=======
 				return validRook(x,y,x0,y0);
 			case 'Q':
 				if (x0 == x || y0 == y) // queen moves horizontal (like a rook)
@@ -198,15 +141,15 @@ bool Board::valid (unsigned short x, unsigned short y, unsigned short x0, unsign
 }
 
 
-void Board::move(unsigned short x0, unsigned short y0, unsigned short x, unsigned short y){
-
-	if (valid(x,y,x0, y0) && board[x0][y0].piece->validMove(x,y)){
+void Board::move(Cell c, unsigned short x, unsigned short y){
+	unsigned short x0 = c.piece->getX();
+	unsigned short y0 = c.piece->getY();
+	if (valid(x,y,c) && c.piece->validMove(x,y)){
 		checkMate = isCheckMate(x, y);
-		board[x0][y0].piece->move(x,y);
-		board[x][y].piece = board[x0][y0].piece;
+		c.piece->move(x,y);
+		board[x][y].piece = c.piece;
 		board[x0][y0].piece = NULL;
 	}
->>>>>>> 4812d69d404dd9ff0fda77ef82a0aaac05e109c0
 }
 
 bool Board::isCheckMate(unsigned short x, unsigned short y){
