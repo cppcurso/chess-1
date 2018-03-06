@@ -70,7 +70,7 @@ void Chess::turn() {
 			cin >> piecePosX;
 			cin >> piecePosY;
 			if (Board::getInstance().board[piecePosX][piecePosY].content() != NULL
-					&& !Board::getInstance().board[piecePosX][piecePosY].content()->isWhite()){ // looks player 1 move a white piece
+					&& Board::getInstance().board[piecePosX][piecePosY].content()->isWhite()){ // looks player 1 move a white piece
 
 				moveSelectedPiece(badPieceSelection);
 			}else {
