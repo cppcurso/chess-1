@@ -10,7 +10,9 @@ CPP_SRCS += \
 ../Chess/src/Cell.cpp \
 ../Chess/src/Game.cpp \
 ../Chess/src/King.cpp \
+../Chess/src/KingMoveTest.cpp \
 ../Chess/src/Knight.cpp \
+../Chess/src/KnightMoveTest.cpp \
 ../Chess/src/Pawn.cpp \
 ../Chess/src/PawnMoveTest.cpp \
 ../Chess/src/Piece.cpp \
@@ -28,7 +30,9 @@ OBJS += \
 ./Chess/src/Cell.o \
 ./Chess/src/Game.o \
 ./Chess/src/King.o \
+./Chess/src/KingMoveTest.o \
 ./Chess/src/Knight.o \
+./Chess/src/KnightMoveTest.o \
 ./Chess/src/Pawn.o \
 ./Chess/src/PawnMoveTest.o \
 ./Chess/src/Piece.o \
@@ -46,7 +50,9 @@ CPP_DEPS += \
 ./Chess/src/Cell.d \
 ./Chess/src/Game.d \
 ./Chess/src/King.d \
+./Chess/src/KingMoveTest.d \
 ./Chess/src/Knight.d \
+./Chess/src/KnightMoveTest.d \
 ./Chess/src/Pawn.d \
 ./Chess/src/PawnMoveTest.d \
 ./Chess/src/Piece.d \

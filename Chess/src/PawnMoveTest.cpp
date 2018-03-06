@@ -7,7 +7,7 @@ protected:
 	Pawn pawn2 = Pawn(false,1,1);
 };
 
-TEST_F(PawnTest,validMove){
+TEST_F(PawnTest,validMove){ //pawn test
 	ASSERT_TRUE(pawn.validMove(1,2));
 	ASSERT_TRUE(pawn.validMove(1,3));
 	ASSERT_FALSE(pawn.validMove(1,5));
