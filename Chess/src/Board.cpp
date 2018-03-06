@@ -115,12 +115,11 @@ bool Board::validPawn(unsigned short x, unsigned short y, unsigned short x0, uns
 		return false;
 }
 
-bool Board::valid (unsigned short x, unsigned short y, Cell c){ // Cell c represents the piece
+bool Board::valid (unsigned short x, unsigned short y, unsigned short x0, unsigned short y0){ // Cell c represents the piece
 	if (x<8 && y<8){ // no se sale del tablero
-		if (board[x][y].isEmpty() || (board[x][y].piece->isWhite()!= c.piece->isWhite())){
+		if (board[x][y].isEmpty() || (board[x][y].piece->isWhite()!= board[x0][y0].piece->isWhite())){
 			// if cell is empty, or there is a piece of another colour (than the piece you want to move)
-			unsigned short x0 = c.piece->getX();
-			unsigned short y0 = c.piece->getY();
+
 			switch (board[x0][y0].piece->getFigure()[0]){
 			case 'B':
 				return validBishop(x,y,x0,y0);
@@ -141,13 +140,12 @@ bool Board::valid (unsigned short x, unsigned short y, Cell c){ // Cell c repres
 }
 
 
-void Board::move(Cell c, unsigned short x, unsigned short y){
-	unsigned short x0 = c.piece->getX();
-	unsigned short y0 = c.piece->getY();
-	if (valid(x,y,c) && c.piece->validMove(x,y)){
+void Board::move(unsigned short x0, unsigned short y0, unsigned short x, unsigned short y){
+
+	if (valid(x,y,x0, y0) && board[x0][y0].piece->validMove(x,y)){
 		checkMate = isCheckMate(x, y);
-		c.piece->move(x,y);
-		board[x][y].piece = c.piece;
+		board[x0][y0].piece->move(x,y);
+		board[x][y].piece = board[x0][y0].piece;
 		board[x0][y0].piece = NULL;
 	}
 }
