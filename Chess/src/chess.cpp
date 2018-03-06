@@ -66,7 +66,6 @@ void Chess::turn() {
 			} else {
 				badPieceSelection = true;
 				cout << "Esa pieza no es tuya mueve otra \n";
-
 			}
 		} while (badPieceSelection);
 
