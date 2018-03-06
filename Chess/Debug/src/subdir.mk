@@ -5,6 +5,7 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../src/Bishop.cpp \
+../src/BishopMoveTest.cpp \
 ../src/Board.cpp \
 ../src/Cell.cpp \
 ../src/Game.cpp \
@@ -19,6 +20,7 @@ CPP_SRCS += \
 
 OBJS += \
 ./src/Bishop.o \
+./src/BishopMoveTest.o \
 ./src/Board.o \
 ./src/Cell.o \
 ./src/Game.o \
@@ -33,6 +35,7 @@ OBJS += \
 
 CPP_DEPS += \
 ./src/Bishop.d \
+./src/BishopMoveTest.d \
 ./src/Board.d \
 ./src/Cell.d \
 ./src/Game.d \
@@ -50,7 +53,7 @@ CPP_DEPS += \
 src/%.o: ../src/%.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: GCC C++ Compiler'
-	g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
+	g++ -I"/home/usuario/clase/chess-1/Chess/src" -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
