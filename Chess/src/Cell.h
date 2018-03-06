@@ -13,7 +13,7 @@ using namespace std;
 
 class Cell {
 	friend class Board;
-	Piece* piece;
+	Piece* cell;
 public:
 	bool isEmpty();
 

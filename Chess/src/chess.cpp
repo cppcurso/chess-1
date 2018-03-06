@@ -10,6 +10,13 @@
 #include "chess.h"
 using namespace std;
 
+<<<<<<< HEAD
+int main() {
+	Board board;
+	board.init();
+	board.print();
+
+=======
 
 void Chess::getNewPosition(){
 	bool movedPiece = false;
@@ -54,6 +61,7 @@ bool Chess::end() {
 		checkMate = true;
 	}
 	return checkMate;
+>>>>>>> 4812d69d404dd9ff0fda77ef82a0aaac05e109c0
 }
 
 void Chess::turn() {
