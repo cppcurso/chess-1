@@ -33,8 +33,8 @@ void Chess::moveSelectedPiece(bool& badPieceSelection){
 			turnNumber++;
 			Board::getInstance().print();
 
-		}
-	}
+
+
 }
 
 Chess::Chess() : Game (2){
