@@ -8,10 +8,11 @@
 #include "Bishop.h"
 
 Bishop::Bishop(bool white, unsigned short x, unsigned short y) {
-	this->white = white;
-	figure = 'B';
 	this->x = x;
 	this->y = y;
+	this->white = white;
+	if (isWhite()) figure = "Bw";
+	else figure = "Bb";
 }
 
 bool Bishop::validMove(unsigned short x, unsigned short y){

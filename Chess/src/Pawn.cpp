@@ -11,7 +11,8 @@
 
 Pawn::Pawn(bool white, unsigned short x, unsigned short y) {
 	this->white = white;
-	figure = 'P';
+	if (white) figure = "Pw";
+	else figure = "Pb";
 	firstMove = true;
 	this->x = x;
 	this->y = y;
@@ -19,15 +20,22 @@ Pawn::Pawn(bool white, unsigned short x, unsigned short y) {
 
 bool Pawn::validMove (unsigned short x, unsigned short y){
 	if (isWhite()){
-		if ((abs(x- this->x)<=1) && ((y - this->y) == 1)){
+		if ((abs(x- this->x)<=1) && ((y - this->y) == 1)){ // normal or attack
 			return true;
-		}else{
+		}else if (firstMove && ((abs(x- this->x)==0) && ((y - this->y) == 2))){
+			return true;
+		}
+		else{
 			return false;
 		}
-	}else if (!isWhite()){
+	}
+	else if (!isWhite()){
 		if ((abs(x- this->x)<=1) && ((y - this->y) == -1)){
 			return true;
-		}else{
+		}else if (firstMove && ((abs(x- this->x)==0) && ((y - this->y) == -2))){
+			return true;
+		}
+		else{
 			return false;
 		}
 	}
@@ -36,8 +44,10 @@ bool Pawn::validMove (unsigned short x, unsigned short y){
 
 
 void Pawn::move (unsigned short x, unsigned short y){
-	this->x = x;
-	this->y = y;
+	if (validMove(x, y)){
+		this->x = x;
+		this->y = y;
+	}else cout<<"Move not valid \n";
 }
 
 void Pawn::moveFirst (unsigned short n){

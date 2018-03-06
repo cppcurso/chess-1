@@ -17,11 +17,22 @@
 
 using namespace std;
 
+Board& Board:: getInstance(){
+	static Board instance;
+	return instance;
+}
+
+bool Board::getCheckMate(){
+	return checkMate;
+}
+
 Board::Board(){
 	length = (sizeof(board[8])/sizeof(int));
+	checkMate = false;
 }
 
 void Board::init(){
+
 	for (size_t i=2; i<7; i++){
 		for (size_t j = 0; j < length; j++){
 			board[i][j].cell = NULL;
@@ -55,13 +66,18 @@ void Board::init(){
 
 void Board::print(){
 	for (size_t i=0; i< 8; i++){
-		cout << endl;
         for (size_t j = 0; j < 8; j++) {
+<<<<<<< HEAD
         	if (board[j][i].cell == NULL ) {
 				cout << "0" << "  ";
+=======
+        	if (board[j][i].piece == NULL ) {
+				cout << "0" << "   ";
+>>>>>>> 4812d69d404dd9ff0fda77ef82a0aaac05e109c0
 			} else {
 				cout<<board[j][i].cell->getFigure()<<"  ";
 			}
+<<<<<<< HEAD
         }
     }
 }
@@ -72,14 +88,62 @@ bool Board::valid (unsigned short x, unsigned short y, Cell c){
 			unsigned short x0 = board[x][y].cell->getX();
 			unsigned short y0 = board[x][y].cell->getY();
 			switch (board[x][y].cell->getFigure()){
+=======
+        }cout << endl;
+    } cout<<endl;
+}
+
+bool Board::validBishop(unsigned short x, unsigned short y, unsigned short x0, unsigned short y0){
+	while ((x0-x) != 0 && (y0-y) != 0){
+		x0++;
+		y0++;
+		if (!board[x0][y0].isEmpty())
+			return false;
+	}return true;
+}
+
+bool Board::validRook(unsigned short x, unsigned short y, unsigned short x0, unsigned short y0){
+	if (x0 == x){
+		for (unsigned short i =(y0+1); i<y; i++){
+			if (!board[x0][i].isEmpty()){
+				return false;
+			}
+		} return true;
+	}
+	else if (y0==y){
+		for (unsigned short i =(x0+1); i<x; i++){
+			if (!board[i][y0].isEmpty())
+				return false;
+		}return true;
+	}else return false;
+}
+
+bool Board::validPawn(unsigned short x, unsigned short y, unsigned short x0, unsigned short y0){
+	if (x != x0  && !board[x][y].isEmpty() && board[x0][y0].piece->isWhite() != board[x][y].piece->isWhite()) // attack
+		return true;
+	else if(x0 == x){
+		for (unsigned short i =(y0+1); i<y; i++){
+			if (!board[x0][i].isEmpty()){
+				return false;
+			}
+		}return true;
+	}
+	else
+		return false;
+}
+
+bool Board::valid (unsigned short x, unsigned short y, Cell c){ // Cell c represents the piece
+	if (x<8 && y<8){ // no se sale del tablero
+		if (board[x][y].isEmpty() || (board[x][y].piece->isWhite()!= c.piece->isWhite())){
+			// if cell is empty, or there is a piece of another colour (than the piece you want to move)
+			unsigned short x0 = c.piece->getX();
+			unsigned short y0 = c.piece->getY();
+			switch (board[x0][y0].piece->getFigure()[0]){
+>>>>>>> 4812d69d404dd9ff0fda77ef82a0aaac05e109c0
 			case 'B':
-				while ((x0-x) != 0 && (y0-y) != 0){
-					x0++;
-					y0++;
-					if (!board[x0][y0].isEmpty())
-						return false;
-				}return true;
+				return validBishop(x,y,x0,y0);
 			case 'R':
+<<<<<<< HEAD
 				if (x0 == x){
 					for (unsigned short i =(y0+1); i<y; i++){
 						if (!board[x0][i].isEmpty())
@@ -118,20 +182,39 @@ bool Board::valid (unsigned short x, unsigned short y, Cell c){
 			}
 		}return false;
 	}return false;
+=======
+				return validRook(x,y,x0,y0);
+			case 'Q':
+				if (x0 == x || y0 == y) // queen moves horizontal (like a rook)
+					return validRook(x,y,x0,y0);
+				else				// queen moves vertical (like a bishop)
+					return validBishop(x,y,x0,y0);
+			case 'P':
+				return validPawn(x,y,x0,y0);
+			default:     // knight and king
+				return true;
+			}
+		}else return false;
+	}else return false;
 }
 
 
-//void Pawn::attack(Board b){
-//	y = y+1;
-//	unsigned short x1 = x+1;
-//	unsigned short x2 = x-1;
-//	if (!b.board[x1][y].isEmpty() && b.board[x2][y].isEmpty()){
-//		if ((b.board[x1][y].cell->isWhite()&& !white) || (!b.board[x1][y].cell->isWhite()&& white)){
-//		b.board[x1][y] = NULL;
-//		x = x1;
-//		}
-//	}else if (!b.board[x2][y].isEmpty()){
-//		b.board[x2][y] = NULL;
-//		x = x2;
-//	}
-//}
+void Board::move(Cell c, unsigned short x, unsigned short y){
+	unsigned short x0 = c.piece->getX();
+	unsigned short y0 = c.piece->getY();
+	if (valid(x,y,c) && c.piece->validMove(x,y)){
+		checkMate = isCheckMate(x, y);
+		c.piece->move(x,y);
+		board[x][y].piece = c.piece;
+		board[x0][y0].piece = NULL;
+	}
+>>>>>>> 4812d69d404dd9ff0fda77ef82a0aaac05e109c0
+}
+
+bool Board::isCheckMate(unsigned short x, unsigned short y){
+
+		if(board[x][y].piece != NULL && board[x][y].piece->getFigure()[0] == 'K'){
+			cout<<"JAQUE MATE!!!!! \n";
+			return true;
+		} else return false;
+}

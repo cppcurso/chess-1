@@ -16,7 +16,7 @@ class Piece {
 protected:
 	int x,y;
 	bool white;
-	char figure;
+	string figure;
 
 public:
 	virtual bool validMove (unsigned short x,unsigned short y) = 0;
@@ -26,37 +26,22 @@ public:
 
 //	bool validMove (int x,int y);
 
-	char getFigure() const {
+	string getFigure() const {
 		return figure;
-	}
-
-	void setFigure(char figure) {
-		this->figure = figure;
 	}
 
 	bool isWhite() const {
 		return white;
 	}
 
-	void setWhite(bool white) {
-		this->white = white;
-	}
-
 	unsigned short getX() const {
 		return x;
-	}
-
-	void setX(unsigned short x) {
-		this->x = x;
 	}
 
 	unsigned short getY() const {
 		return y;
 	}
 
-	void setY(unsigned short y) {
-		this->y = y;
-	}
 	virtual ~Piece(){}
 };
 

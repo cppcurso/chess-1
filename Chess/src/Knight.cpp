@@ -8,10 +8,11 @@
 #include "Knight.h"
 
 Knight::Knight(bool white, unsigned short x, unsigned short y) {
-	this -> white = white;
-	this -> figure = 'k';
 	this -> x = x;
-//	this -> y = y;
+	this -> y = y;
+	this->white = white;
+	if (white) figure = "kw";
+	else figure = "kb";
 }
 
 void Knight::move(unsigned short x, unsigned short y){
