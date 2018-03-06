@@ -16,6 +16,7 @@ CPP_SRCS += \
 ../Chess/src/Piece.cpp \
 ../Chess/src/Queen.cpp \
 ../Chess/src/Rook.cpp \
+../Chess/src/RookMove1.cpp \
 ../Chess/src/chess.cpp \
 ../Chess/src/main.cpp 
 
@@ -32,6 +33,7 @@ OBJS += \
 ./Chess/src/Piece.o \
 ./Chess/src/Queen.o \
 ./Chess/src/Rook.o \
+./Chess/src/RookMove1.o \
 ./Chess/src/chess.o \
 ./Chess/src/main.o 
 
@@ -48,6 +50,7 @@ CPP_DEPS += \
 ./Chess/src/Piece.d \
 ./Chess/src/Queen.d \
 ./Chess/src/Rook.d \
+./Chess/src/RookMove1.d \
 ./Chess/src/chess.d \
 ./Chess/src/main.d 
 

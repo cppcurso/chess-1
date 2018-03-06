@@ -58,6 +58,7 @@ bool Chess::end() {
 
 void Chess::turn() {
 	bool badPieceSelection = true;
+	bool player;
 	if (turnNumber % 2 == 0) {
 		cout << "Mueve jugador 1" << '\n';
 		player = true;
