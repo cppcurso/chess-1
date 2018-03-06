@@ -27,7 +27,7 @@ void Chess::getNewPosition(){
 void Chess::moveSelectedPiece(bool& badPieceSelection){
 			cout << "mueves el: "<<Board::getInstance().board[piecePosX][piecePosY].content()->getFigure()<< '\n';
 			getNewPosition();
-			Board::getInstance().move(Board::getInstance().board[piecePosX][piecePosY], x, y);
+			Board::getInstance().move(piecePosX, piecePosY, x, y);
 			badPieceSelection = false;
 			turnNumber++;
 			Board::getInstance().print();
