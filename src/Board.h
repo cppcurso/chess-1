@@ -10,7 +10,6 @@
 
 #include "Cell.h"
 #include "Piece.h"
-#include "pila.cpp"
 #include "Memento.h"
 
 class Board {
