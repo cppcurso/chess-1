@@ -155,3 +155,7 @@ bool Board::isCheckMate(unsigned short x, unsigned short y){
 			return true;
 		} else return false;
 }
+
+void Board::save(){
+	//Memento save = Memento(board);
+}

@@ -10,6 +10,8 @@
 
 #include "Cell.h"
 #include "Piece.h"
+#include "pila.cpp"
+#include "Memento.h"
 
 class Board {
 	unsigned int length;
@@ -28,6 +30,8 @@ public:
 	bool valid(unsigned short x, unsigned short y, unsigned short x0, unsigned short y0);
 	void move(unsigned short x0, unsigned short y0, unsigned short x, unsigned short y);
 	bool isCheckMate(unsigned short x, unsigned short y);
+	void save();
+
 	//void attack(Board b);
 };
 

@@ -13,6 +13,7 @@ CPP_SRCS += \
 ../Chess/src/KingMoveTest.cpp \
 ../Chess/src/Knight.cpp \
 ../Chess/src/KnightMoveTest.cpp \
+../Chess/src/Memento.cpp \
 ../Chess/src/Pawn.cpp \
 ../Chess/src/PawnMoveTest.cpp \
 ../Chess/src/Piece.cpp \
@@ -21,7 +22,8 @@ CPP_SRCS += \
 ../Chess/src/Rook.cpp \
 ../Chess/src/RookMove1.cpp \
 ../Chess/src/chess.cpp \
-../Chess/src/main.cpp 
+../Chess/src/main.cpp \
+../Chess/src/pila.cpp 
 
 OBJS += \
 ./Chess/src/Bishop.o \
@@ -33,6 +35,7 @@ OBJS += \
 ./Chess/src/KingMoveTest.o \
 ./Chess/src/Knight.o \
 ./Chess/src/KnightMoveTest.o \
+./Chess/src/Memento.o \
 ./Chess/src/Pawn.o \
 ./Chess/src/PawnMoveTest.o \
 ./Chess/src/Piece.o \
@@ -41,7 +44,8 @@ OBJS += \
 ./Chess/src/Rook.o \
 ./Chess/src/RookMove1.o \
 ./Chess/src/chess.o \
-./Chess/src/main.o 
+./Chess/src/main.o \
+./Chess/src/pila.o 
 
 CPP_DEPS += \
 ./Chess/src/Bishop.d \
@@ -53,6 +57,7 @@ CPP_DEPS += \
 ./Chess/src/KingMoveTest.d \
 ./Chess/src/Knight.d \
 ./Chess/src/KnightMoveTest.d \
+./Chess/src/Memento.d \
 ./Chess/src/Pawn.d \
 ./Chess/src/PawnMoveTest.d \
 ./Chess/src/Piece.d \
@@ -61,14 +66,15 @@ CPP_DEPS += \
 ./Chess/src/Rook.d \
 ./Chess/src/RookMove1.d \
 ./Chess/src/chess.d \
-./Chess/src/main.d 
+./Chess/src/main.d \
+./Chess/src/pila.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
 Chess/src/%.o: ../Chess/src/%.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: GCC C++ Compiler'
-	g++ -I"/home/usuario/workspace/chess-1/Chess/src" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
+	g++ -I"/home/usuario/workspace/chess-1/Chess/src" -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
