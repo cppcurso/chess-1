@@ -14,6 +14,7 @@
 #include "King.h"
 #include "Queen.h"
 #include "Bishop.h"
+#include "Storage.cpp"
 
 using namespace std;
 
@@ -156,6 +157,4 @@ bool Board::isCheckMate(unsigned short x, unsigned short y){
 		} else return false;
 }
 
-void Board::save(){
-	//Memento save = Memento(board);
-}
+
