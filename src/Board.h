@@ -10,7 +10,7 @@
 
 #include "Cell.h"
 #include "Piece.h"
-#include "Storage.h"
+
 
 
 class Board {

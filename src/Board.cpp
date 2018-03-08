@@ -14,7 +14,7 @@
 #include "King.h"
 #include "Queen.h"
 #include "Bishop.h"
-#include "Storage.cpp"
+
 
 using namespace std;
 
