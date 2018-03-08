@@ -78,8 +78,19 @@ void Board::print(){
 
 bool Board::validBishop(unsigned short x, unsigned short y, unsigned short x0, unsigned short y0){
 	while ((x0-x) != 0 && (y0-y) != 0){
-		x0++;
-		y0++;
+		if (x0 < x && y0 < y){
+			x0++;
+			y0++;
+		} else if (x0 < x && y0>y){
+			x0++;
+			y0--;
+		} else if(x0 > x && y0 < y){
+			x0--;
+			y0++;
+		} else if(x0 > x && y0 > y){
+			x0--;
+			y0--;
+		}
 		if (!board[x0][y0].isEmpty())
 			return false;
 	}return true;
