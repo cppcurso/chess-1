@@ -10,9 +10,11 @@
 
 #include "Cell.h"
 #include "Piece.h"
-#include "Memento.h"
+#include "Storage.h"
+
 
 class Board {
+	friend class Storage;
 	unsigned int length;
 	bool checkMate;
 	static const short dimension = 8;
@@ -29,7 +31,7 @@ public:
 	bool valid(unsigned short x, unsigned short y, unsigned short x0, unsigned short y0);
 	void move(unsigned short x0, unsigned short y0, unsigned short x, unsigned short y);
 	bool isCheckMate(unsigned short x, unsigned short y);
-	void save();
+
 
 	//void attack(Board b);
 };

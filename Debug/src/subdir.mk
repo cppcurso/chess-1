@@ -21,6 +21,7 @@ CPP_SRCS += \
 ../src/QueenMoveTest.cpp \
 ../src/Rook.cpp \
 ../src/RookMove1.cpp \
+../src/Storage.cpp \
 ../src/chess.cpp \
 ../src/main.cpp 
 
@@ -42,6 +43,7 @@ OBJS += \
 ./src/QueenMoveTest.o \
 ./src/Rook.o \
 ./src/RookMove1.o \
+./src/Storage.o \
 ./src/chess.o \
 ./src/main.o 
 
@@ -63,6 +65,7 @@ CPP_DEPS += \
 ./src/QueenMoveTest.d \
 ./src/Rook.d \
 ./src/RookMove1.d \
+./src/Storage.d \
 ./src/chess.d \
 ./src/main.d 
 
@@ -71,7 +74,11 @@ CPP_DEPS += \
 src/%.o: ../src/%.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: GCC C++ Compiler'
+<<<<<<< HEAD
 	g++ -I"/home/usuario/workspace/chess-1/src" -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
+=======
+	g++ -I"/home/usuario/chess-1/src" -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
+>>>>>>> 1b4373b7193c7470e431d6e3a7a3c8ba76a33449
 	@echo 'Finished building: $<'
 	@echo ' '
 
