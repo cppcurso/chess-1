@@ -24,13 +24,17 @@ void Chess::getNewPosition(){
 	}
 	while(!movedPiece);
 }
-void Chess::moveSelectedPiece(bool& badPieceSelection){
-			cout << "mueves el: "<<Board::getInstance().board[piecePosX][piecePosY].content()->getFigure()<< '\n';
-			getNewPosition();
-			Board::getInstance().move(piecePosX, piecePosY, x, y);
-			badPieceSelection = false;
-			turnNumber++;
-			Board::getInstance().print();
+void Chess::moveSelectedPiece(bool& badPieceSelection, bool& goodMove){
+
+	cout << "mueves el: "<<Board::getInstance().board[piecePosX][piecePosY].content()->getFigure()<< '\n';
+
+	getNewPosition();
+	goodMove = Board::getInstance().move(piecePosX, piecePosY, x, y);
+
+
+	badPieceSelection = false;
+
+	Board::getInstance().print();
 }
 
 Chess::Chess() : Game (2){
@@ -58,6 +62,7 @@ bool Chess::end() {
 
 void Chess::turn() {
 	bool badPieceSelection = true;
+	bool goodMove = false;
 	bool player;
 	if (turnNumber % 2 == 0) {
 		cout << "Mueve jugador 1" << '\n';
@@ -73,12 +78,16 @@ void Chess::turn() {
 		cin >> piecePosY;
 		if (Board::getInstance().board[piecePosX][piecePosY].content() != NULL
 				&& Board::getInstance().board[piecePosX][piecePosY].content()->isWhite() == player){ // looks player 1 move a white piece
-			moveSelectedPiece(badPieceSelection);
+			moveSelectedPiece(badPieceSelection, goodMove);
+			if(!goodMove){ cout <<"Ese movimiento no es valido \n";
+			badPieceSelection = true;
+			}
 		}else {
 			badPieceSelection = true;
 			cout << "Esa pieza no es tuya mueve otra \n";
 		}
-	}while (badPieceSelection);
+	}while (badPieceSelection && !goodMove);
+	turnNumber++;
 }
 
 

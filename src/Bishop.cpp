@@ -6,6 +6,7 @@
  */
 
 #include "Bishop.h"
+#include <math.h>
 
 Bishop::Bishop(bool white, unsigned short x, unsigned short y) {
 	this->x = x;
@@ -16,7 +17,7 @@ Bishop::Bishop(bool white, unsigned short x, unsigned short y) {
 }
 
 bool Bishop::validMove(unsigned short x, unsigned short y){
-	if((x-this->x)==(y-this->y))	{
+	if(abs(x-this->x) == abs(y-this->y))	{
 		return true;
 	}
 	else{
@@ -25,11 +26,7 @@ bool Bishop::validMove(unsigned short x, unsigned short y){
 }
 
 void Bishop::move(unsigned short x, unsigned short y){
-	if(validMove(x, y)){
-		for(int i = this->x; i < x; i++){
-			this->x++;
-			this->y++;
-		}
-	}
+			this->x = x;
+			this->y = y;
 }
 

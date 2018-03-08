@@ -19,7 +19,7 @@ public:
 		virtual void finish() = 0;
 		void play();
 		Game(unsigned short players);
-		~Game(){}
+		virtual ~Game(){}
 
 
 

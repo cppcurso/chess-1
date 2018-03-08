@@ -21,13 +21,13 @@ class Chess : public Game{
 		bool checkMate;
 		int turnNumber;
 		void getNewPosition();
-		void moveSelectedPiece(bool& badPieceSelection);
+		void moveSelectedPiece(bool& badPieceSelection, bool& goodMove);
 		void start();
 		bool end();
 		void turn();
 		void finish();
 		Chess();
-		~Chess(){}
+		virtual ~Chess(){}
 
 	};
 

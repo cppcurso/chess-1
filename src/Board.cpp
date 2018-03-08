@@ -44,8 +44,8 @@ void Board::init(){
 	}
 
 	for (unsigned int i =0; i < length ; i++) {
-			board[i][6] = Cell(new Pawn(false,i,6));
-		}
+		board[i][6] = Cell(new Pawn(false,i,6));
+	}
 
 	board[1][0] = Cell(new Knight(true, 1, 0));
 	board[6][0] = Cell(new Knight(true, 6, 0));
@@ -67,38 +67,49 @@ void Board::init(){
 
 void Board::print(){
 	for (size_t i=0; i< 8; i++){
-        for (size_t j = 0; j < 8; j++) {
-        	if (board[j][i].piece == NULL ) {
+		for (size_t j = 0; j < 8; j++) {
+			if (board[j][i].piece == NULL ) {
 				cout << "0" << "   ";
 			} else {
 				cout<<board[j][i].piece->getFigure()<<"  ";
 			}
-        }cout << endl;
-    } cout<<endl;
+		}cout << endl;
+	} cout<<endl;
 }
 
 bool Board::validBishop(unsigned short x, unsigned short y, unsigned short x0, unsigned short y0){
-	while ((x0-x) != 0 && (y0-y) != 0){
-		x0++;
-		y0++;
-		if (!board[x0][y0].isEmpty())
-			return false;
-	}return true;
+	do{
+		if (x0 < x && y0 < y){
+			x0++;
+			y0++;
+		} else if (x0 < x && y0 > y){
+			x0++;
+			y0--;
+		} else if(x0 > x && y0 < y){
+			x0--;
+			y0++;
+		} else if(x0 > x && y0 > y){
+			x0--;
+			y0--;
+		}
+		if (!board[x0][y0].isEmpty())return false;
+	}while ((x0-x) != 0 && (y0-y) != 0);
+	return true;
 }
 
 bool Board::validRook(unsigned short x, unsigned short y, unsigned short x0, unsigned short y0){
 	if (x0 == x){
-		while(y0<y){
-			if (!board[x0][y0].isEmpty()){
-				return false;
-			}
-			y0++;
+		while(y0 != y){
+			if(y0 < y)y0++;
+			else y0--;
+			if (!board[x0][y0].isEmpty())return false;
 		} return true;
 	}
 	else if (y0==y){
-		for (unsigned short i =(x0+1); i<x; i++){
-			if (!board[i][y0].isEmpty())
-				return false;
+		while(x0 != x){
+			if(x0 < x)x0++;
+			else x0--;
+			if (!board[x0][y0].isEmpty())return false;
 		}return true;
 	}else return false;
 }
@@ -120,11 +131,11 @@ bool Board::validPawn(unsigned short x, unsigned short y, unsigned short x0, uns
 bool Board::valid (unsigned short x, unsigned short y, unsigned short x0, unsigned short y0){ // Cell c represents the piece
 	if (x<8 && y<8){ // no se sale del tablero
 		if (board[x][y].isEmpty() || (board[x][y].piece->isWhite()!= board[x0][y0].piece->isWhite())){
-			// if cell is empty, or there is a piece of another colour (than the piece you want to move)
+			// if cell is empty, or there is a piece of another color (than the piece you want to move)
 			switch (board[x0][y0].piece->getFigure()[0]){
 			case 'B':
 				return validBishop(x,y,x0,y0);
-			case 'R':
+			case 'T':
 				return validRook(x,y,x0,y0);
 			case 'Q':
 				if (x0 == x || y0 == y) // queen moves horizontal (like a rook)
@@ -141,21 +152,22 @@ bool Board::valid (unsigned short x, unsigned short y, unsigned short x0, unsign
 }
 
 
-void Board::move(unsigned short x0, unsigned short y0, unsigned short x, unsigned short y){
+bool Board::move(unsigned short x0, unsigned short y0, unsigned short x, unsigned short y){
 	if (valid(x,y,x0, y0) && board[x0][y0].piece->validMove(x,y)){
 		checkMate = isCheckMate(x, y);
 		board[x0][y0].piece->move(x,y);
 		board[x][y].piece = board[x0][y0].piece;
 		board[x0][y0].piece = NULL;
-	}
+		return true;
+	} else return false;
 }
 
 bool Board::isCheckMate(unsigned short x, unsigned short y){
 
-		if(board[x][y].piece != NULL && board[x][y].piece->getFigure()[0] == 'K'){
-			cout<<"JAQUE MATE!!!!! \n";
-			return true;
-		} else return false;
+	if(board[x][y].piece != NULL && board[x][y].piece->getFigure()[0] == 'K'){
+		cout<<"JAQUE MATE!!!!! \n";
+		return true;
+	} else return false;
 }
 
 
