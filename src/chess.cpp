@@ -17,7 +17,6 @@ void Chess::getNewPosition(){
 		cout << "Posición a la que mueves: ";
 		cin >> x;
 		cin >> y;
-
 		if (piecePosX == x && piecePosY == y){
 			cout << "No has movido la pieza, introduce otra posición \n";
 		}else movedPiece = true;
@@ -25,15 +24,10 @@ void Chess::getNewPosition(){
 	while(!movedPiece);
 }
 void Chess::moveSelectedPiece(bool& badPieceSelection, bool& goodMove){
-
 	cout << "mueves el: "<<Board::getInstance().board[piecePosX][piecePosY].content()->getFigure()<< '\n';
-
 	getNewPosition();
 	goodMove = Board::getInstance().move(piecePosX, piecePosY, x, y);
-
-
 	badPieceSelection = false;
-
 	Board::getInstance().print();
 }
 

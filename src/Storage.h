@@ -30,37 +30,44 @@ public:
 		for (int i = 0; i < 8; ++i) {
 			for (int j = 0; j < 8; ++j) {
 				if (!Board::getInstance().board[i][j].isEmpty()){
-				write( file, Board::getInstance().board[i][j].piece ->figure[0]);
-				write( file, Board::getInstance().board[i][j].piece -> figure[1]);
-				write( file, Board::getInstance().board[i][j].piece -> white);
-				write( file, Board::getInstance().board[i][j].piece -> x);
-				write( file, Board::getInstance().board[i][j].piece -> y);
+					write( file, Board::getInstance().board[i][j].piece ->figure[0]);
+					write( file, Board::getInstance().board[i][j].piece -> figure[1]);
+					write( file, Board::getInstance().board[i][j].piece -> white);
+					write( file, Board::getInstance().board[i][j].piece -> x);
+					write( file, Board::getInstance().board[i][j].piece -> y);
 				}
-
 			}
-
 		}
 	}
+
 	static void restore(){
 		ifstream file("games", ios::binary);
+		char a,b;
+		bool w;
+		short x, y;
 		for (int i = 0; i < 8; ++i) {
 			for (int j = 0; j < 8; ++j) {
-				if (!Board::getInstance().board[i][j].isEmpty()){
-					read( file, Board::getInstance().board[i][j].piece ->figure[0]);
-					read( file, Board::getInstance().board[i][j].piece -> figure[1]);
-					read( file, Board::getInstance().board[i][j].piece -> white);
-					read( file, Board::getInstance().board[i][j].piece -> x);
-					read( file, Board::getInstance().board[i][j].piece -> y);
-					cout << Board::getInstance().board[i][j].piece ->figure[0] << endl;
-					cout << Board::getInstance().board[i][j].piece ->figure[1] << endl;
-					cout << Board::getInstance().board[i][j].piece ->white << endl;
-					cout << Board::getInstance().board[i][j].piece ->x << endl;
-					cout << Board::getInstance().board[i][j].piece ->y << endl;
-				}}
+				read( file, a);
+				read( file, b);
+				read( file, w);
+				read( file, x);
+				read( file, y);
+				Board::getInstance().board[x][y].piece ->figure[0] = a;
+				Board::getInstance().board[x][y].piece ->figure[1] = b;
+				Board::getInstance().board[x][y].piece -> white = w;
+				Board::getInstance().board[x][y].piece -> x = x;
+				Board::getInstance().board[x][y].piece -> y = y;
+//				if (!Board::getInstance().board[i][j].isEmpty()){
+//					read( file, Board::getInstance().board[i][j].piece ->figure[0]);
+//					read( file, Board::getInstance().board[i][j].piece -> figure[1]);
+//					read( file, Board::getInstance().board[i][j].piece -> white);
+//					read( file, Board::getInstance().board[i][j].piece -> x);
+//					read( file, Board::getInstance().board[i][j].piece -> y);
+//
+//				}
+			}
 		}
-
-
-
 	}
+
 };
 #endif /* SRC_STORAGE_H_ */
