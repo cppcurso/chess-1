@@ -88,10 +88,11 @@ bool Board::validBishop(unsigned short x, unsigned short y, unsigned short x0, u
 
 bool Board::validRook(unsigned short x, unsigned short y, unsigned short x0, unsigned short y0){
 	if (x0 == x){
-		for (unsigned short i =(y0+1); i<y; i++){
-			if (!board[x0][i].isEmpty()){
+		while(y0<y){
+			if (!board[x0][y0].isEmpty()){
 				return false;
 			}
+			y0++;
 		} return true;
 	}
 	else if (y0==y){
