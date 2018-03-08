@@ -16,10 +16,11 @@ int main(int argc, char **argv) {
 
 	Board::getInstance();
 		Board::getInstance().init();
-		Board::getInstance().print();
+//		Board::getInstance().print();
 		Storage::save();
+		Storage::restore();
 		Board::getInstance().move(0, 1, 0, 2);
-		Board::getInstance().print();
+//		Board::getInstance().print();
 
 
 //	Chess chessGame;
