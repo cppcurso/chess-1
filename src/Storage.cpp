@@ -28,7 +28,7 @@ template<typename T>
 	    file.read((char *) &data, sizeof(T));
 	}
 
-	 void static Storage:: save(){
+	static void  Storage:: save(){
 		for (int i = 0; i < 8; ++i) {
 			for (int j = 0; j < 8; ++j) {
 				write( "games", Board::getInstance().board[i][j].piece -> getFigure()[0]);

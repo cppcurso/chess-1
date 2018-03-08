@@ -13,8 +13,9 @@ using namespace std;
 
 class Cell {
 	friend class Board;
-	Piece* piece;
+
 public:
+	Piece* piece;
 	bool isEmpty();
 
 	Piece* content();

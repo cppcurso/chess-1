@@ -14,7 +14,7 @@ using namespace std;
 
 class Storage {
 public:
-	 void static save();
+	static void  save();
 	//static Board restore(Board& board);
 
 
