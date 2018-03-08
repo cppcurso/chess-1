@@ -22,8 +22,7 @@ CPP_SRCS += \
 ../src/Rook.cpp \
 ../src/RookMove1.cpp \
 ../src/chess.cpp \
-../src/main.cpp \
-../src/pila.cpp 
+../src/main.cpp 
 
 OBJS += \
 ./src/Bishop.o \
@@ -44,8 +43,7 @@ OBJS += \
 ./src/Rook.o \
 ./src/RookMove1.o \
 ./src/chess.o \
-./src/main.o \
-./src/pila.o 
+./src/main.o 
 
 CPP_DEPS += \
 ./src/Bishop.d \
@@ -66,15 +64,14 @@ CPP_DEPS += \
 ./src/Rook.d \
 ./src/RookMove1.d \
 ./src/chess.d \
-./src/main.d \
-./src/pila.d 
+./src/main.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
 src/%.o: ../src/%.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: GCC C++ Compiler'
-	g++ -I"/home/sara/workspace/chess-1/src" -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
+	g++ -I"/home/usuario/workspace/chess-1/src" -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
