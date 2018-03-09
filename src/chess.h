@@ -31,6 +31,7 @@ class Chess : public Game{
 
 	};
 
+
 	} /* namespace std */
 
 	#endif /* CHESS_H_ */

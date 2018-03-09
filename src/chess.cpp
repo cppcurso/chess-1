@@ -8,6 +8,7 @@
 
 #include "Board.h"
 #include "chess.h"
+#include "Storage.h"
 using namespace std;
 
 
@@ -41,14 +42,27 @@ Chess::Chess() : Game (2){
 }
 
 void Chess::start() {
-	cout << "Colocando las piezas..." << '\n';
 	Board::getInstance();
-	Board::getInstance().init();
+	cout << "Colocando las piezas..." << '\n';
+	cout<<"Partida nueva: 0"<<endl;
+	cout<<"Recuperar partida guardada: 1"<<endl;
+	unsigned short n;
+	cin>>n;
+	switch (n){
+	case 0:
+		Board::getInstance().init();
+		break;
+	case 1:
+		turnNumber = Storage::restore();
+		break;
+	default:
+		Board::getInstance().init();
+	}
 	Board::getInstance().print();
 }
 
 bool Chess::end() {
-	if (Board::getInstance().getCheckMate()) {
+	if (Board::getInstance().getCheckMate() || (piecePosX == 10 && piecePosY == 10)) {
 		checkMate = true;
 	}
 	return checkMate;
@@ -70,6 +84,9 @@ void Chess::turn() {
 		cout << "Pieza a mover: ";
 		cin >> piecePosX;
 		cin >> piecePosY;
+		if(piecePosX == 10 && piecePosY == 10){ // en caso de que quieras salir
+			break;
+		}
 		if (Board::getInstance().board[piecePosX][piecePosY].content() != NULL
 				&& Board::getInstance().board[piecePosX][piecePosY].content()->isWhite() == player){ // looks player 1 move a white piece
 			moveSelectedPiece(badPieceSelection, goodMove);
@@ -81,15 +98,20 @@ void Chess::turn() {
 			cout << "Esa pieza no es tuya mueve otra \n";
 		}
 	}while (badPieceSelection && !goodMove);
+	Storage::save(turnNumber);
 	turnNumber++;
 }
 
 
 void Chess::finish() {
-	if (turnNumber % 2 == 0)
-		cout << "Gana Jugador 2 \n";
-	else
-		cout << "Gana Jugador 1 \n";
+	if (piecePosX == 10 && piecePosY == 10){
+		cout<<"Continuará... \n";
+	}else{
+		if (turnNumber % 2 == 0)
+			cout << "Gana Jugador 2 \n";
+		else
+			cout << "Gana Jugador 1 \n";
+	}
 }
 
 

@@ -15,7 +15,7 @@ using namespace std;
 class Piece {
 protected:
 	friend class Storage;
-	int x,y;
+	short x,y;
 	bool white;
 	string figure;
 
