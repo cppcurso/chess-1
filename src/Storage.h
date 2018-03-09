@@ -71,12 +71,16 @@ public:
 				write( file, Board::getInstance().board[j][i].piece -> white);
 				write( file, Board::getInstance().board[j][i].piece -> x);
 				write( file, Board::getInstance().board[j][i].piece -> y);
+<<<<<<< HEAD
 >>>>>>> 6612c77ba3491e542861bed4e9df6d466feabe98
 				}
 			}
 <<<<<<< HEAD
 		}
 	}
+=======
+			}
+>>>>>>> 9587deb7659a4e290b8d085e07fa42df2e2e48bb
 
 	static void restore(){
 		ifstream file("games", ios::binary);
