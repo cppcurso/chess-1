@@ -6,7 +6,7 @@
  */
 
 #include "Bishop.h"
-#include <math.h>
+#include <math.h> // si no compilas con C++11 se requiere la librería cstdlib
 
 Bishop::Bishop(bool white, unsigned short x, unsigned short y) {
 	this->x = x;
