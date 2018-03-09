@@ -21,7 +21,7 @@ public:
 		}
 
 		template<typename T>
-		static void read(ifstream file, T& data) {
+		static void read(ifstream& file, T& data) {
 		    file.read((char *) &data, sizeof(T));
 		}
 
