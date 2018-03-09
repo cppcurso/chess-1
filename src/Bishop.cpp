@@ -7,7 +7,6 @@
 
 #include "Bishop.h"
 #include <math.h>
-#include <cstdlib>
 
 Bishop::Bishop(bool white, unsigned short x, unsigned short y) {
 	this->x = x;
