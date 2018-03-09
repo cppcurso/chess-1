@@ -93,7 +93,8 @@ bool Board::validBishop(unsigned short x, unsigned short y, unsigned short x0, u
 			x0--;
 			y0--;
 		}
-		if (!board[x0][y0].isEmpty())return false;
+		if (!board[x0][y0].isEmpty() || board[x0][y0].piece->isWhite() != board[x][y].piece->isWhite())
+			return false;
 	}while ((x0-x) != 0 && (y0-y) != 0);
 	return true;
 }
@@ -103,14 +104,16 @@ bool Board::validRook(unsigned short x, unsigned short y, unsigned short x0, uns
 		while(y0 != y){
 			if(y0 < y)y0++;
 			else y0--;
-			if (!board[x0][y0].isEmpty())return false;
+			if (!board[x0][y0].isEmpty()|| board[x0][y0].piece->isWhite() != board[x][y].piece->isWhite())
+				return false;
 		} return true;
 	}
 	else if (y0==y){
 		while(x0 != x){
 			if(x0 < x)x0++;
 			else x0--;
-			if (!board[x0][y0].isEmpty())return false;
+			if (!board[x0][y0].isEmpty()|| board[x0][y0].piece->isWhite() != board[x][y].piece->isWhite())
+				return false;
 		}return true;
 	}else return false;
 }
