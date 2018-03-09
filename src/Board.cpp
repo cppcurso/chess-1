@@ -79,7 +79,22 @@ void Board::print(){
 }
 
 bool Board::validBishop(unsigned short x, unsigned short y, unsigned short x0, unsigned short y0){
-	do{
+	if (x0 < x && y0 < y){
+				x0++;
+				y0++;
+			} else if (x0 < x && y0 > y){
+				x0++;
+				y0--;
+			} else if(x0 > x && y0 < y){
+				x0--;
+				y0++;
+			} else if(x0 > x && y0 > y){
+				x0--;
+				y0--;
+			}
+	while ((x0-x) != 0 && (y0-y) != 0){
+		if (!board[x0][y0].isEmpty())
+					return false;
 		if (x0 < x && y0 < y){
 			x0++;
 			y0++;
@@ -93,27 +108,27 @@ bool Board::validBishop(unsigned short x, unsigned short y, unsigned short x0, u
 			x0--;
 			y0--;
 		}
-		if (!board[x0][y0].isEmpty() || board[x0][y0].piece->isWhite() != board[x][y].piece->isWhite())
-			return false;
-	}while ((x0-x) != 0 && (y0-y) != 0);
+	}
 	return true;
 }
 
 bool Board::validRook(unsigned short x, unsigned short y, unsigned short x0, unsigned short y0){
 	if (x0 == x){
+		y0++;
 		while(y0 != y){
+			if (!board[x0][y0].isEmpty())
+				return false;
 			if(y0 < y)y0++;
 			else y0--;
-			if (!board[x0][y0].isEmpty()|| board[x0][y0].piece->isWhite() != board[x][y].piece->isWhite())
-				return false;
 		} return true;
 	}
 	else if (y0==y){
+		x0++;
 		while(x0 != x){
+			if (!board[x0][y0].isEmpty())
+				return false;
 			if(x0 < x)x0++;
 			else x0--;
-			if (!board[x0][y0].isEmpty()|| board[x0][y0].piece->isWhite() != board[x][y].piece->isWhite())
-				return false;
 		}return true;
 	}else return false;
 }
