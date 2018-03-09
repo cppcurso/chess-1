@@ -37,11 +37,11 @@ public:
 		for (int i = 0; i < 8; ++i) {
 			for (int j = 0; j < 8; ++j) {
 				if (!Board::getInstance().board[j][i].isEmpty()){
-				write( file, Board::getInstance().board[j][i].piece ->figure[0]);
-				write( file, Board::getInstance().board[j][i].piece -> white);
-				write( file, Board::getInstance().board[j][i].piece -> x);
-				write( file, Board::getInstance().board[j][i].piece -> y);
-			}
+					write( file, Board::getInstance().board[j][i].piece ->figure[0]);
+					write( file, Board::getInstance().board[j][i].piece -> white);
+					write( file, Board::getInstance().board[j][i].piece -> x);
+					write( file, Board::getInstance().board[j][i].piece -> y);
+				}
 
 			}
 		} write (file, turnNumber);
@@ -57,9 +57,6 @@ public:
 			read( file, w);
 			read( file, x);
 			read( file, y);
-			cout<<"a: "<<a<<endl;
-			cout<<"x:"<<x<<endl;
-			cout<<"y: "<<y<<endl;
 			switch(a){
 			case 'P':
 				Board::getInstance().board[x][y] = Cell(new Pawn(w,x,y));

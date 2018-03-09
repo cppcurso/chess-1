@@ -30,6 +30,7 @@ bool Board::getCheckMate(){
 Board::Board(){
 	length = (sizeof(board[8])/sizeof(int));
 	checkMate = false;
+	count = 32;
 }
 
 void Board::init(){
@@ -155,8 +156,10 @@ bool Board::valid (unsigned short x, unsigned short y, unsigned short x0, unsign
 bool Board::move(unsigned short x0, unsigned short y0, unsigned short x, unsigned short y){
 	if (valid(x,y,x0, y0) && board[x0][y0].piece->validMove(x,y)){
 		checkMate = isCheckMate(x, y);
-		board[x0][y0].piece->move(x,y);
-		board[x][y].piece = board[x0][y0].piece;
+		if (!board[x][y].isEmpty())
+			count--;
+		board[x0][y0].piece->move(x,y); // piece movement
+		board[x][y].piece = board[x0][y0].piece; // cell piece sustitution
 		board[x0][y0].piece = NULL;
 		return true;
 	} else return false;
