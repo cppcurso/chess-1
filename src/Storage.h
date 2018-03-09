@@ -86,16 +86,3 @@ public:
 	}
 };
 #endif /* SRC_STORAGE_H_ */
-
-//				if (!Board::getInstance().board[i][j].isEmpty()){
-			//					read( file, Board::getInstance().board[i][j].piece ->figure[0]);
-			//					read( file, Board::getInstance().board[i][j].piece -> figure[1]);
-			//					read( file, Board::getInstance().board[i][j].piece -> white);
-			//					read( file, Board::getInstance().board[i][j].piece -> x);
-			//					read( file, Board::getInstance().board[i][j].piece -> y);
-			//					cout << Board::getInstance().board[i][j].piece ->figure[0] << endl;
-			//					cout << Board::getInstance().board[i][j].piece ->figure[1] << endl;
-			//					cout << Board::getInstance().board[i][j].piece ->white << endl;
-			//					cout << Board::getInstance().board[i][j].piece ->x << endl;
-			//					cout << Board::getInstance().board[i][j].piece ->y << endl;
-			//				}
