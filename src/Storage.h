@@ -41,7 +41,7 @@ public:
 				write( file, Board::getInstance().board[j][i].piece -> white);
 				write( file, Board::getInstance().board[j][i].piece -> x);
 				write( file, Board::getInstance().board[j][i].piece -> y);
-				}
+			}
 
 			}
 		} write (file, turnNumber);
