@@ -18,6 +18,7 @@ class Board {
 	unsigned int length;
 	bool checkMate;
 	static const short dimension = 8;
+	unsigned int count;
 	Board();
 public:
 	Cell board[dimension][dimension];
